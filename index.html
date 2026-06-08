@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Raman Kumar Singh — PhD Researcher at IIT Bombay working on electrochemical CO₂ utilization, multiphase flow modeling, and metal-CO₂ battery systems."/>
+<title>Raman Kumar Singh | IIT Bombay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --ink:       #0f1117;
+    --ink-2:     #3a3d4a;
+    --ink-3:     #7a7e8f;
+    --paper:     #f7f5f0;
+    --cream:     #ede9e0;
+    --accent:    #1a5c9a;
+    --accent-2:  #0e3d6b;
+    --accent-lt: #dceaf8;
+    --gold:      #c8972a;
+    --green:     #2a7a4b;
+    --line:      rgba(15,17,23,0.10);
+    --card-bg:   #ffffff;
+    --r:         8px;
+    --shadow:    0 2px 16px rgba(15,17,23,0.08);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    line-height: 1.65;
+    font-size: 16px;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(247,245,240,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--line);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-brand {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.1rem;
+    color: var(--accent-2);
+    text-decoration: none;
+    letter-spacing: -0.02em;
+  }
+  .nav-links { display: flex; gap: 0.25rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--ink-2);
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 20px;
+    transition: background 0.2s, color 0.2s;
+    letter-spacing: 0.01em;
+  }
+  .nav-links a:hover { background: var(--accent-lt); color: var(--accent); }
+  .nav-links a.active { background: var(--accent); color: #fff; }
+  .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+  .hamburger span { width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: 0.3s; }
+  @media (max-width: 700px) {
+    .nav-links { display: none; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0;
+      background: var(--paper); border-bottom: 1px solid var(--line); padding: 1rem; gap: 0.5rem; }
+    .nav-links.open { display: flex; }
+    .hamburger { display: flex; }
+  }
+
+  /* ── LAYOUT ── */
+  .section { padding: 5rem 2rem; max-width: 900px; margin: 0 auto; }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .section-rule { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 2.5rem; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 92vh;
+    display: flex; align-items: center;
+    background: linear-gradient(135deg, #0e2a4a 0%, #1a5c9a 60%, #2a7a6b 100%);
+    position: relative; overflow: hidden;
+    padding: 4rem 2rem;
+  }
+  #hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(200,151,42,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse at 10% 80%, rgba(42,122,75,0.20) 0%, transparent 55%);
+  }
+  .hero-inner {
+    max-width: 900px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+    position: relative; z-index: 1;
+  }
+  .hero-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.6);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.4rem, 6vw, 3.8rem);
+    color: #fff;
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    margin-bottom: 1.2rem;
+  }
+  .hero-title {
+    font-size: 1.05rem;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 0.5rem;
+    font-weight: 400;
+  }
+  .hero-inst {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 2rem;
+  }
+  .hero-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 2rem; }
+  .chip {
+    font-size: 0.72rem;
+    font-weight: 500;
+    padding: 0.3rem 0.75rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255,255,255,0.25);
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.02em;
+    background: rgba(255,255,255,0.07);
+  }
+  .hero-btns { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.65rem 1.4rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    cursor: pointer;
+  }
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.20); }
+  .btn-primary { background: #fff; color: var(--accent-2); }
+  .btn-secondary { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.5); }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+  .hero-avatar {
+    width: 180px; height: 180px;
+    border-radius: 50%;
+    border: 4px solid rgba(255,255,255,0.25);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.30);
+    object-fit: cover;
+    background: linear-gradient(135deg, #2a5c8a, #1a3a5a);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem;
+    color: rgba(255,255,255,0.5);
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+  @media (max-width: 600px) {
+    .hero-inner { grid-template-columns: 1fr; }
+    .hero-avatar { width: 120px; height: 120px; font-size: 2.8rem; }
+  }
+
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+  .about-card {
+    background: var(--card-bg);
+    border-radius: var(--r);
+    padding: 1.5rem;
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow);
+  }
+  .about-card h3 {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-bottom: 0.75rem;
+  }
+  .about-card p, .about-card li {
+    font-size: 0.88rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+  }
+  .about-card ul { padding-left: 1.2rem; }
+  .about-card li { margin-bottom: 0.3rem; }
+  @media (max-width: 600px) { .about-grid { grid-template-columns: 1fr; } }
+
+  /* ── TIMELINE (Education) ── */
+  .timeline { position: relative; padding-left: 2rem; }
+  .timeline::before {
+    content: ''; position: absolute; left: 6px; top: 8px; bottom: 8px;
+    width: 2px; background: var(--cream);
+  }
+  .tl-item { position: relative; margin-bottom: 2.5rem; }
+  .tl-dot {
+    position: absolute; left: -2rem; top: 6px;
+    width: 14px; height: 14px; border-radius: 50%;
+    background: var(--accent); border: 3px solid var(--paper);
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  .tl-period {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--accent);
+    letter-spacing: 0.08em;
+    margin-bottom: 0.3rem;
+  }
+  .tl-degree {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+  .tl-inst { font-size: 0.88rem; color: var(--ink-2); margin-bottom: 0.4rem; }
+  .tl-thesis {
+    font-size: 0.82rem;
+    color: var(--ink-3);
+    font-style: italic;
+    padding: 0.6rem 1rem;
+    border-left: 3px solid var(--accent-lt);
+    background: var(--accent-lt);
+    border-radius: 0 4px 4px 0;
+    margin-top: 0.5rem;
+  }
+
+  /* ── RESEARCH ── */
+  .research-intro {
+    font-size: 0.95rem;
+    color: var(--ink-2);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    max-width: 720px;
+  }
+  .research-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .r-card {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .r-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(15,17,23,0.12); }
+  .r-card-icon { font-size: 1.8rem; margin-bottom: 0.75rem; }
+  .r-card h3 { font-family: 'DM Serif Display', serif; font-size: 1rem; margin-bottom: 0.5rem; }
+  .r-card p { font-size: 0.83rem; color: var(--ink-2); line-height: 1.6; }
+  @media (max-width: 600px) { .research-cards { grid-template-columns: 1fr; } }
+
+  /* ── PUBLICATIONS ── */
+  .pub-section { margin-bottom: 2.5rem; }
+  .pub-section-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .pub-item {
+    background: var(--card-bg);
+    border-radius: var(--r);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 0.75rem;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    box-shadow: var(--shadow);
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .pub-item.conference { border-left-color: var(--gold); }
+  .pub-item.presentation { border-left-color: var(--green); }
+  .pub-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    color: var(--ink-3);
+    min-width: 1.5rem;
+    margin-top: 0.2rem;
+  }
+  .pub-body { flex: 1; }
+  .pub-title {
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.3rem;
+    line-height: 1.5;
+  }
+  .pub-title a { color: var(--accent); text-decoration: none; }
+  .pub-title a:hover { text-decoration: underline; }
+  .pub-meta { font-size: 0.78rem; color: var(--ink-3); }
+
+  /* ── AWARDS ── */
+  .award-card {
+    background: linear-gradient(135deg, #fdf8ee, #fff9ec);
+    border: 1px solid #e8d7a0;
+    border-left: 4px solid var(--gold);
+    border-radius: var(--r);
+    padding: 1.5rem 1.8rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+    box-shadow: 0 2px 12px rgba(200,151,42,0.10);
+  }
+  .award-icon { font-size: 2rem; flex-shrink: 0; }
+  .award-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; margin-bottom: 0.4rem; }
+  .award-desc { font-size: 0.87rem; color: var(--ink-2); line-height: 1.6; }
+
+  /* ── CONTACT ── */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+  .contact-item {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    padding: 1.2rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    text-decoration: none;
+    color: var(--ink);
+    transition: transform 0.15s, box-shadow 0.15s, border-color 0.15s;
+    box-shadow: var(--shadow);
+  }
+  .contact-item:hover { transform: translateY(-2px); border-color: var(--accent); box-shadow: 0 6px 24px rgba(26,92,154,0.12); }
+  .contact-icon { font-size: 1.4rem; flex-shrink: 0; }
+  .contact-label { font-size: 0.72rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-value { font-size: 0.88rem; font-weight: 500; }
+  @media (max-width: 600px) { .contact-grid { grid-template-columns: 1fr; } }
+
+  /* ── EXPERIENCE LIST ── */
+  .exp-list { list-style: none; }
+  .exp-item {
+    padding: 1rem 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.88rem;
+    color: var(--ink-2);
+    line-height: 1.7;
+    display: flex; gap: 0.75rem; align-items: flex-start;
+  }
+  .exp-item::before { content: '→'; color: var(--accent); flex-shrink: 0; margin-top: 0.05rem; }
+
+  /* ── FOOTER ── */
+  footer {
+    text-align: center;
+    padding: 2.5rem;
+    font-size: 0.78rem;
+    color: var(--ink-3);
+    border-top: 1px solid var(--line);
+    background: var(--cream);
+  }
+
+  /* ── FADE-IN ── */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+  .fade-in.visible { opacity: 1; transform: none; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-brand">Raman Kumar Singh</a>
+  <button class="hamburger" id="hbg" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-tag">Research Scholar · IIT Bombay</p>
+      <h1 class="hero-name">Raman<br>Kumar Singh</h1>
+      <p class="hero-title">Department of Energy Science and Engineering</p>
+      <p class="hero-inst">Indian Institute of Technology Bombay, Mumbai, India</p>
+      <div class="hero-chips">
+        <span class="chip">Electrochemical Systems</span>
+        <span class="chip">Metal-CO₂ Batteries</span>
+        <span class="chip">Multiphase Flow</span>
+        <span class="chip">CCUS</span>
+        <span class="chip">Multiphysics Modeling</span>
+      </div>
+      <div class="hero-btns">
+        <a href="mailto:ramanras@iitb.ac.in" class="btn btn-primary">✉ Contact Me</a>
+        <a href="https://scholar.google.com/citations?hl=en&user=HyjhCJsAAAAJ" target="_blank" class="btn btn-secondary">Google Scholar ↗</a>
+      </div>
+    </div>
+    <div class="hero-avatar">🧪</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section fade-in">
+  <h2 class="section-title">About</h2>
+  <div class="section-rule"></div>
+  <div class="about-grid">
+    <div class="about-card">
+      <h3>Research Aim</h3>
+      <p>To design and optimize high-efficiency electrochemical systems for CO₂ conversion and energy applications using multiphysics modeling tools.</p>
+    </div>
+    <div class="about-card">
+      <h3>Vision</h3>
+      <p>To bridge advanced computational modeling with practical electrochemical technologies, driving sustainable energy conversion, storage, and CO₂ utilization for a cleaner future.</p>
+    </div>
+    <div class="about-card">
+      <h3>Research Interests</h3>
+      <ul>
+        <li>Physics-based modeling of electrochemical energy devices</li>
+        <li>CO₂ electrochemical conversion and utilization</li>
+        <li>Multiphase flow dynamics and bubble transport</li>
+        <li>Electrochemical characterization of batteries & fuel cells</li>
+        <li>Fuel cell and battery stack design</li>
+      </ul>
+    </div>
+    <div class="about-card">
+      <h3>Technical Skills</h3>
+      <ul>
+        <li>COMSOL Multiphysics (multiphase flow, electrochemistry)</li>
+        <li>Mathematical & numerical modeling (MATLAB, Python)</li>
+        <li>Computational fluid dynamics (CFD)</li>
+        <li>Electrochemical characterization techniques</li>
+        <li>Design Builder (energy modeling)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education" class="section fade-in">
+  <h2 class="section-title">Education</h2>
+  <div class="section-rule"></div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2021 — Present</div>
+      <div class="tl-degree">Doctor of Philosophy</div>
+      <div class="tl-inst">Department of Energy Science &amp; Engineering · IIT Bombay, Mumbai</div>
+      <div class="tl-thesis">Thesis: "Modelling and experimental analysis of metal-CO₂ based electrochemical system for CO₂ capturing"<br>Supervisors: Dr. Prakash C Ghosh &amp; Dr. Venkatasailanathan Ramadesigan</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2019 — 2021</div>
+      <div class="tl-degree">Master of Science</div>
+      <div class="tl-inst">Department of Energy Science &amp; Engineering · IIT Bombay, Mumbai</div>
+      <div class="tl-thesis">Thesis: "A modeling approach of Na-water based electrochemical system to capture CO₂"<br>Supervisors: Dr. Prakash C Ghosh &amp; Dr. Venkatasailanathan Ramadesigan</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2015 — 2018</div>
+      <div class="tl-degree">Bachelor of Science — Mathematics &amp; Chemistry</div>
+      <div class="tl-inst">University of Allahabad, Prayagraj, India</div>
+    </div>
+  </div>
+
+  <h3 style="font-family:'DM Serif Display',serif;font-size:1.25rem;margin:2.5rem 0 1rem;letter-spacing:-0.02em;">Academic Experience</h3>
+  <ul class="exp-list">
+    <li class="exp-item">Attendee, SustainX – ACE 2025 &amp; 4th CO₂India Meet: Decoding Decarbonization &amp; Accelerating Clean Energy, IIT Madras, Chennai</li>
+    <li class="exp-item">Teaching Assistant — Conservation of Energy in Buildings (Design Builder software), IIT Bombay (2021–Present)</li>
+    <li class="exp-item">Teaching Assistant — Fuel Cells (tutorials and classes on basic and advanced concepts), IIT Bombay</li>
+    <li class="exp-item">Teaching Assistant — Non-Conventional Energy Systems Laboratory &amp; Energy Laboratory, IIT Bombay</li>
+    <li class="exp-item">Volunteer Organizer — International Conference on Advances in Energy Research (ICAER 2023), IIT Bombay</li>
+    <li class="exp-item">Event Logistics Manager — Energy Day 2022, Department of Energy Science &amp; Engineering, IIT Bombay</li>
+  </ul>
+</section>
+
+<!-- RESEARCH -->
+<section id="research" class="section fade-in">
+  <h2 class="section-title">Research</h2>
+  <div class="section-rule"></div>
+  <p class="research-intro">With rising global energy demand and increasing CO₂ emissions, there is an urgent need to develop efficient energy conversion and storage technologies. My research bridges fundamental electrochemistry with practical applications by leveraging multiphysics modeling to optimize advanced electrochemical systems — fuel cells, metal-air batteries, and CO₂ utilization devices — through integrated computational simulations and experimental validation.</p>
+  <p class="research-intro" style="margin-top:-1.5rem;">My doctoral work focuses on the multiphysics modeling of electrochemical CO₂ utilization in metal-CO₂ systems (Mg-CO₂ and Zn-CO₂) for simultaneous H₂ production and metal bicarbonate synthesis, integrating multiphase flow dynamics, mass transport phenomena, and electrochemical kinetics.</p>
+  <div class="research-cards">
+    <div class="r-card">
+      <div class="r-card-icon">⚗️</div>
+      <h3>Metal-CO₂ Electrochemical Systems</h3>
+      <p>Modeling Mg-CO₂ and Zn-CO₂ primary batteries for simultaneous H₂ production, power generation, and CO₂ utilization via multiphysics transient models.</p>
+    </div>
+    <div class="r-card">
+      <div class="r-card-icon">🌊</div>
+      <h3>Multiphase Flow &amp; Bubble Transport</h3>
+      <p>Euler–Euler bubble flow dynamics in electrolyzers and metal-air batteries; studying gas-phase distribution and its effect on electrochemical performance.</p>
+    </div>
+    <div class="r-card">
+      <div class="r-card-icon">💻</div>
+      <h3>Multiphysics Modeling &amp; Simulation</h3>
+      <p>3D/2D transient COMSOL models integrating dilute solution theory, porous electrode theory, Darcy's Law, and electrochemical kinetics validated against experimental data.</p>
+    </div>
+    <div class="r-card">
+      <div class="r-card-icon">♻️</div>
+      <h3>CCUS Technologies</h3>
+      <p>Developing scalable CO₂ capture, conversion, and utilization technologies addressing critical challenges in carbon neutrality and renewable energy integration.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications" class="section fade-in">
+  <h2 class="section-title">Publications</h2>
+  <div class="section-rule"></div>
+
+  <div class="pub-section">
+    <div class="pub-section-title">Journal Publications</div>
+    <div class="pub-item">
+      <span class="pub-num">1.</span>
+      <div class="pub-body">
+        <div class="pub-title">
+          <a href="https://doi.org/10.1016/j.electacta.2025.146333" target="_blank">Mathematical modeling and simulation of Mg-CO₂ primary battery for hydrogen generation and CO₂ utilization</a>
+        </div>
+        <div class="pub-meta">Singh, R. K., Ghosh, P. C., &amp; Ramadesigan, V. · <em>Electrochimica Acta</em>, 2025, 146333</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub-section">
+    <div class="pub-section-title">Conference Publications</div>
+    <div class="pub-item conference">
+      <span class="pub-num">1.</span>
+      <div class="pub-body">
+        <div class="pub-title">
+          <a href="https://www.comsol.com/paper/electrical-field-effect-on-co2-absorption-and-chemisorption-in-a-rectangular-bubble-column-by-comsol-128161" target="_blank">Electrical field effect on CO₂ absorption and chemisorption in a rectangular bubble column by COMSOL</a>
+        </div>
+        <div class="pub-meta">Singh, R. K., Ghosh, P. C., &amp; Ramadesigan, V. · COMSOL Conference 2023, Bengaluru, India</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub-section">
+    <div class="pub-section-title">Conference Presentations</div>
+    <div class="pub-item presentation">
+      <span class="pub-num">1.</span>
+      <div class="pub-body">
+        <div class="pub-title">Multifunctional Na–CO₂ Electrochemical System: Experimental Validation and Modeling for Sustainable Hydrogen and NaHCO₃ Co-Production</div>
+        <div class="pub-meta">Singh, R. K., Ghosh, P. C., &amp; Ramadesigan, V. · 13th Asian Conference on Electrochemical Power Sources (ACEPS 13), Bengaluru, India · 2026</div>
+      </div>
+    </div>
+    <div class="pub-item presentation">
+      <span class="pub-num">2.</span>
+      <div class="pub-body">
+        <div class="pub-title">Flow-Based Zn-CO₂ Battery for Simultaneous CO₂ Mitigation, Power Generation, and Hydrogen Production</div>
+        <div class="pub-meta">Singh, R. K., Ghosh, P. C., &amp; Ramadesigan, V. · 9th International Conference on New Energy and Applications (ICNEA 2025), Tokyo, Japan · 2025</div>
+      </div>
+    </div>
+    <div class="pub-item presentation">
+      <span class="pub-num">3.</span>
+      <div class="pub-body">
+        <div class="pub-title">
+          <a href="https://drive.google.com/file/d/1pDHCgukEup0Qa67CZ2xU867Vcz1qGIky/view?usp=sharing" target="_blank">Model-Based Investigation of Zn–CO₂ Electrochemical Systems for CO₂ Reduction to H₂ and Electricity Production</a>
+        </div>
+        <div class="pub-meta">Singh, R. K., Ghosh, P. C., &amp; Ramadesigan, V. · SustainX – ACE 2025 &amp; 4th CO₂India Meet, IIT Madras, Chennai · 2025</div>
+      </div>
+    </div>
+    <div class="pub-item presentation">
+      <span class="pub-num">4.</span>
+      <div class="pub-body">
+        <div class="pub-title">
+          <a href="https://aiche.confex.com/aiche/icosse25/meetingapp.cgi/Paper/705339" target="_blank">A Combined Chemical, Electrochemical and Multiphase Flow Model of Zn-CO₂ System for CO₂ Utilisation in H₂ and Electricity</a>
+        </div>
+        <div class="pub-meta">Singh, R. K., Ghosh, P. C., &amp; Ramadesigan, V. · ICOSSE '25, Auckland, New Zealand · 2025</div>
+      </div>
+    </div>
+    <div class="pub-item presentation">
+      <span class="pub-num">5.</span>
+      <div class="pub-body">
+        <div class="pub-title">
+          <a href="https://www.iseac.org.in/pdf/Abstract%20Booklet%20EIHE%202025.pdf" target="_blank">Study on the Effects of Bubble Diameter and Reaction Rate Kinetics in an Mg-CO₂ Electrochemical System</a>
+        </div>
+        <div class="pub-meta">Singh, R. K., Ghosh, P. C., &amp; Ramadesigan, V. · DAE-BRNS Conference EIHE 2025, BARC, Mumbai · 2025</div>
+      </div>
+    </div>
+    <div class="pub-item presentation">
+      <span class="pub-num">6.</span>
+      <div class="pub-body">
+        <div class="pub-title">
+          <a href="https://drive.google.com/file/d/13VKVymLMJWF151sANOOkE7-Tefl95MOM/view?usp=sharing" target="_blank">A Mathematical Modeling Approach to Utilize CO₂ into Hydrogen and Electricity Via Na-CO₂ Electrochemical System</a>
+        </div>
+        <div class="pub-meta">Singh, R. K., Ghosh, P. C., &amp; Ramadesigan, V. · CACEE, TIFR Mumbai · 2024</div>
+      </div>
+    </div>
+    <div class="pub-item presentation">
+      <span class="pub-num">7.</span>
+      <div class="pub-body">
+        <div class="pub-title">
+          <a href="https://abstracts.ise-online.org/infiles/doc_production/top240444.pdf" target="_blank">Modelling and Numerical Study of Mg-CO₂ Electrochemical System for CO₂ Utilization with Electricity and Hydrogen Production</a>
+        </div>
+        <div class="pub-meta">Singh, R. K., Ghosh, P. C., &amp; Ramadesigan, V. · 37th Topical Meeting of the ISE, Stresa, Italy · 2024</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards" class="section fade-in">
+  <h2 class="section-title">Honors &amp; Awards</h2>
+  <div class="section-rule"></div>
+  <div class="award-card">
+    <div class="award-icon">🏆</div>
+    <div>
+      <div class="award-title">Best Poster Presentation Award</div>
+      <div class="award-desc">
+        Awarded at the <strong>SustainX – ACE 2025 &amp; 4th CO₂India Meet: Decoding Decarbonization &amp; Accelerating Clean Energy</strong>, organised by the School of Sustainability, IIT Madras, in partnership with WRI India and CO₂India, held at IIT Madras, Chennai, India.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section fade-in">
+  <h2 class="section-title">Contact</h2>
+  <div class="section-rule"></div>
+  <div class="contact-grid">
+    <a href="mailto:ramanras@iitb.ac.in" class="contact-item">
+      <span class="contact-icon">✉</span>
+      <div>
+        <div class="contact-label">Institute Email</div>
+        <div class="contact-value">ramanras@iitb.ac.in</div>
+      </div>
+    </a>
+    <a href="mailto:ramansingh0098@gmail.com" class="contact-item">
+      <span class="contact-icon">📧</span>
+      <div>
+        <div class="contact-label">Personal Email</div>
+        <div class="contact-value">ramansingh0098@gmail.com</div>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/ramanras/" target="_blank" class="contact-item">
+      <span class="contact-icon">💼</span>
+      <div>
+        <div class="contact-label">LinkedIn</div>
+        <div class="contact-value">linkedin.com/in/ramanras</div>
+      </div>
+    </a>
+    <a href="https://scholar.google.com/citations?hl=en&user=HyjhCJsAAAAJ" target="_blank" class="contact-item">
+      <span class="contact-icon">🎓</span>
+      <div>
+        <div class="contact-label">Google Scholar</div>
+        <div class="contact-value">View Publications</div>
+      </div>
+    </a>
+    <a href="https://orcid.org/0009-0000-3515-1392" target="_blank" class="contact-item">
+      <span class="contact-icon">🔬</span>
+      <div>
+        <div class="contact-label">ORCID</div>
+        <div class="contact-value">0009-0000-3515-1392</div>
+      </div>
+    </a>
+    <a href="https://www.ese.iitb.ac.in/" target="_blank" class="contact-item">
+      <span class="contact-icon">🏛</span>
+      <div>
+        <div class="contact-label">Department</div>
+        <div class="contact-value">ESE, IIT Bombay</div>
+      </div>
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2025 Raman Kumar Singh · Department of Energy Science and Engineering, IIT Bombay</p>
+  <p style="margin-top:0.5rem;">Built with HTML/CSS · Hosted on GitHub Pages</p>
+</footer>
+
+<script>
+  // Hamburger
+  document.getElementById('hbg').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  // Close nav on link click (mobile)
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+  // Scroll fade-in
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+  // Active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navAs = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 80) cur = s.id; });
+    navAs.forEach(a => {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
+    });
+  });
+</script>
+</body>
+</html>
