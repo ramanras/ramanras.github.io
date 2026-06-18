@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Mg-CO₂ Primary Battery</title>
+
+<style>
+body{
+    font-family: 'DM Sans', sans-serif;
+    max-width: 900px;
+    margin: auto;
+    padding: 40px 20px;
+    line-height: 1.8;
+    color:#222;
+}
+
+h1{
+    color:#1a5c9a;
+}
+
+.paper-meta{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.btn{
+    display:inline-block;
+    padding:10px 18px;
+    margin-right:10px;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+.doi-btn{
+    background:#1a5c9a;
+    color:white;
+}
+
+.request-btn{
+    background:#2a7a4b;
+    color:white;
+}
+
+.graphical{
+    max-width:100%;
+    margin-top:15px;
+    border:1px solid #ddd;
+    border-radius:6px;
+}
+
+.back{
+    color:#1a5c9a;
+    text-decoration:none;
+}
+</style>
+</head>
+
+<body>
+
+<a class="back" href="index.html">← Back to Publications</a>
+
+<h1>
+Mathematical modeling and simulation of Mg-CO₂ primary battery for hydrogen generation and CO₂ utilization
+</h1>
+
+<div class="paper-meta">
+R. K. Singh, P. C. Ghosh and V. Ramadesigan<br>
+Electrochimica Acta (2025), 531, 146333
+</div>
+
+<a class="btn doi-btn"
+   href="https://doi.org/10.1016/j.electacta.2025.146333"
+   target="_blank">
+   DOI
+</a>
+
+<a class="btn request-btn"
+   href="mailto:ramanras@iitb.ac.in?subject=Request Full Text - Mg-CO2 Primary Battery">
+   Request Full Text
+</a>
+
+<hr>
+
+<h2>Abstract</h2>
+
+<p>
+PASTE YOUR FULL ABSTRACT HERE
+</p>
+
+<h2>Graphical Abstract</h2>
+
+<img src="mg-co2-graphical-abstract.png"
+     alt="Graphical Abstract"
+     class="graphical">
+
+<p>
+<em>Replace the image filename with your actual graphical abstract image.</em>
+</p>
+
+</body>
+</html>
