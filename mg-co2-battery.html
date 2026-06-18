@@ -1,139 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Mg-CO₂ Primary Battery</title>
+  <!-- FIX 1: Added meta description for SEO -->
+  <meta name="description" content="Mathematical modeling and simulation of Mg-CO₂ primary battery for hydrogen generation and CO₂ utilization — Electrochimica Acta, 2025. R. K. Singh, P. C. Ghosh, V. Ramadesigan.">
 
-<style>
-body{
-    font-family: 'DM Sans', sans-serif;
-    max-width: 900px;
-    margin: auto;
-    padding: 40px 20px;
-    line-height: 1.8;
-    color:#222;
-}
+  <!-- FIX 2: Open Graph tags for social sharing previews -->
+  <meta property="og:title" content="Mg-CO₂ Primary Battery — Electrochimica Acta 2025">
+  <meta property="og:description" content="A 3D transient model of a membrane-free Mg-CO₂ primary battery for CO₂ utilization, power generation, and H₂ production. Published in Electrochimica Acta, 2025.">
+  <meta property="og:image" content="https://ramanras.github.io/mg-co2-graphical-abstract.jpg">
+  <meta property="og:url" content="https://ramanras.github.io/mg-co2-battery.html">
+  <meta property="og:type" content="article">
 
-h1{
-    color:#1a5c9a;
-}
+  <!-- FIX 3: Added Twitter/X card meta tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mg-CO₂ Primary Battery — Electrochimica Acta 2025">
+  <meta name="twitter:description" content="A 3D transient model of a membrane-free Mg-CO₂ primary battery for CO₂ utilization, power generation, and H₂ production.">
+  <meta name="twitter:image" content="https://ramanras.github.io/mg-co2-graphical-abstract.jpg">
 
-.paper-meta{
-    color:#666;
-    margin-bottom:20px;
-}
+  <title>Mg-CO₂ Primary Battery | Raman Kumar Singh</title>
 
-.btn{
-    display:inline-block;
-    padding:10px 18px;
-    margin-right:10px;
-    border-radius:5px;
-    text-decoration:none;
-    font-weight:600;
-}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 
-.doi-btn{
-    background:#1a5c9a;
-    color:white;
-}
+  <style>
+    body {
+      font-family: 'DM Sans', sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+      line-height: 1.8;
+      color: #222;
+    }
 
-.request-btn{
-    background:#2a7a4b;
-    color:white;
-}
+    h1 {
+      color: #1a5c9a;
+    }
 
-.graphical{
-    max-width:100%;
-    margin-top:15px;
-    border:1px solid #ddd;
-    border-radius:6px;
-}
+    h2 {
+      color: #1a5c9a;
+      margin-top: 36px;
+    }
 
-.back{
-    color:#1a5c9a;
-    text-decoration:none;
-}
-</style>
+    .paper-meta {
+      color: #666;
+      /* FIX 4: Added margin-top to separate from title, and clear margin-bottom before buttons */
+      margin-top: 10px;
+      margin-bottom: 20px;
+      font-size: 15px;
+    }
+
+    /* FIX 5: Added publication year badge near the top */
+    .pub-year {
+      display: inline-block;
+      background: #eaf2fb;
+      color: #1a5c9a;
+      font-size: 13px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      letter-spacing: 0.03em;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      margin-right: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    .doi-btn {
+      background: #1a5c9a;
+      color: white;
+    }
+
+    .doi-btn:hover {
+      background: #154e84;
+    }
+
+    .request-btn {
+      background: #2a7a4b;
+      color: white;
+    }
+
+    .request-btn:hover {
+      background: #22623c;
+    }
+
+    .graphical {
+      max-width: 100%;
+      margin-top: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .back {
+      color: #1a5c9a;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .back:hover {
+      text-decoration: underline;
+    }
+
+    .abstract-text {
+      text-align: justify;
+    }
+
+    .keywords {
+      margin-top: 15px;
+      font-size: 15px;
+    }
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ddd;
+      margin-top: 36px;
+      margin-bottom: 8px;
+    }
+
+    /* FIX 6: Copy-to-clipboard button for BibTeX */
+    .cite-wrapper {
+      position: relative;
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: #1a5c9a;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 4px 12px;
+      font-size: 13px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 600;
+    }
+
+    .copy-btn:hover {
+      background: #154e84;
+    }
+
+    pre {
+      background: #f6f8fa;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      padding: 15px;
+      padding-right: 80px; /* space for copy button */
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .btn {
+        display: block;
+        margin-bottom: 10px;
+        margin-right: 0;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<a class="back" href="index.html">← Back to Publications</a>
+  <a class="back" href="index.html">← Back to Publications</a>
 
-<h1>
-Mathematical modeling and simulation of Mg-CO₂ primary battery for hydrogen generation and CO₂ utilization
-</h1>
+  <!-- FIX 5: Prominent year badge -->
+  <p style="margin-bottom: 0; margin-top: 20px;">
+    <span class="pub-year">Electrochimica Acta · 2025</span>
+  </p>
 
-<div class="paper-meta">
-R. K. Singh, P. C. Ghosh and V. Ramadesigan<br>
-Electrochimica Acta (2025), 531, 146333
-</div>
+  <h1>
+    Mathematical modeling and simulation of Mg-CO₂ primary battery for hydrogen generation and CO₂ utilization
+  </h1>
 
-<a class="btn doi-btn"
-   href="https://doi.org/10.1016/j.electacta.2025.146333"
-   target="_blank">
-   DOI
-</a>
+  <div class="paper-meta">
+    R. K. Singh, P. C. Ghosh and V. Ramadesigan<br>
+    <!-- FIX 7: Added direct journal link alongside the citation -->
+    <em>Electrochimica Acta</em> (2025), Vol. 531, 146333 &nbsp;·&nbsp;
+    <a href="https://www.sciencedirect.com/journal/electrochimica-acta" target="_blank" rel="noopener" style="color:#1a5c9a;">Elsevier</a>
+  </div>
 
-<a class="btn request-btn"
-   href="mailto:ramansingh0098@gmail.com?subject=Request Full Text - Mg-CO2 Primary Battery">
-   Request Full Text
-</a>
+  <!-- FIX 8: URL-encoded mailto subject line -->
+  <a class="btn doi-btn"
+     href="https://doi.org/10.1016/j.electacta.2025.146333"
+     target="_blank" rel="noopener">
+     DOI ↗
+  </a>
 
-<hr>
-<h2>Abstract</h2>
+  <a class="btn request-btn"
+     href="mailto:ramansingh0098@gmail.com?subject=Request%20Full%20Text%20-%20Mg-CO2%20Primary%20Battery">
+     ✉ Request Full Text
+  </a>
 
-<p style="text-align:justify;">
-After industrialization, atmospheric carbon dioxide (CO<sub>2</sub>)
-increased to 420 ppm, leading to critical environmental issues.
-Despite advances in carbon capture, utilization, and storage (CCUS)
-technologies, their economic feasibility and slow CO<sub>2</sub>
-conversion rates hinder their effectiveness. Recently, metal-CO<sub>2</sub> electrochemical systems that utilize
-the acidity from the spontaneous CO<sub>2</sub> dissolution in aqueous
-solution have gained significant attention due to their potential for
-hydrogen and electrical energy generation. However, there is a lack of
-detailed transient analysis and mathematical models of these systems. A three-dimensional transient model is developed of a membrane-free
-Mg-CO<sub>2</sub> primary battery for CO<sub>2</sub> utilization,
-power generation, and hydrogen production by integrating Euler–Euler
-bubble flow, dilute solution theory, and electrochemical kinetics, and
-validated against existing literature data. It provides insight into real-time species concentration distribution,
-current and potential distribution, phase fractions, current density,
-volume-averaged species concentration, and electrochemical performance.
-Parametric analysis reveals that increasing electrolyte conductivity
-from 0.20 to 0.30 S m<sup>−1</sup>, reducing cathode porosity from
-0.50 to 0.40, and shortening the anode–cathode gap from 3.5 cm to
-2.5 cm significantly enhances power density by 37.64%, 2.46%, and
-10.2% and hydrogen production over 24 h by 17.4%, 9.75%, and 31.3%,
-respectively. This work offers valuable insights for improving the performance of the
-membrane-free Mg-CO<sub>2</sub> system, contributing to a more
-sustainable and environmentally friendly energy solution.
-</p>
+  <hr>
 
-<!-- ADD KEYWORDS RIGHT HERE -->
-<p style="margin-top: 15px; font-size: 15px;">
+  <h2>Abstract</h2>
+
+  <p class="abstract-text">
+    After industrialization, atmospheric carbon dioxide (CO<sub>2</sub>)
+    increased to 420 ppm, leading to critical environmental issues.
+    Despite advances in carbon capture, utilization, and storage (CCUS)
+    technologies, their economic feasibility and slow CO<sub>2</sub>
+    conversion rates hinder their effectiveness. Recently, metal-CO<sub>2</sub> electrochemical systems that utilize
+    the acidity from the spontaneous CO<sub>2</sub> dissolution in aqueous
+    solution have gained significant attention due to their potential for
+    hydrogen and electrical energy generation. However, there is a lack of
+    detailed transient analysis and mathematical models of these systems. A three-dimensional transient model is developed of a membrane-free
+    Mg-CO<sub>2</sub> primary battery for CO<sub>2</sub> utilization,
+    power generation, and hydrogen production by integrating Euler–Euler
+    bubble flow, dilute solution theory, and electrochemical kinetics, and
+    validated against existing literature data. It provides insight into real-time species concentration distribution,
+    current and potential distribution, phase fractions, current density,
+    volume-averaged species concentration, and electrochemical performance.
+    Parametric analysis reveals that increasing electrolyte conductivity
+    from 0.20 to 0.30 S m<sup>−1</sup>, reducing cathode porosity from
+    0.50 to 0.40, and shortening the anode–cathode gap from 3.5 cm to
+    2.5 cm significantly enhances power density by 37.64%, 2.46%, and
+    10.2% and hydrogen production over 24 h by 17.4%, 9.75%, and 31.3%,
+    respectively. This work offers valuable insights for improving the performance of the
+    membrane-free Mg-CO<sub>2</sub> system, contributing to a more
+    sustainable and environmentally friendly energy solution.
+  </p>
+
+  <p class="keywords">
     <strong>Keywords:</strong> CO<sub>2</sub> utilization; Hydrogen production; Energy conversion; Mg-CO<sub>2</sub> system modeling; Computational fluid dynamics
-</p>
+  </p>
 
-<h2>Graphical Abstract</h2>
-<p>Schematic of the membrane-free Mg-CO<sub>2</sub> primary battery framework showing the coupling of Euler–Euler bubble flow, dilute solution theory, and electrochemical kinetics:</p>
+  <h2>Graphical Abstract</h2>
+  <p>Schematic of the membrane-free Mg-CO<sub>2</sub> primary battery framework showing the coupling of Euler–Euler bubble flow, dilute solution theory, and electrochemical kinetics:</p>
 
-<!-- <h2>Graphical Abstract</h2> -->
+  <!-- FIX 9: Improved alt text -->
+  <img src="mg-co2-graphical-abstract.jpg"
+       alt="Schematic of the membrane-free Mg-CO₂ primary battery coupling Euler–Euler bubble flow, dilute solution theory, and electrochemical kinetics for CO₂ utilization and simultaneous H₂ and electricity production"
+       class="graphical">
 
-<img src="mg-co2-graphical-abstract.jpg"
-     alt="Schematic of membrane-free Mg-CO2 primary battery showing electrochemical kinetics and bubble flow dynamics"
-     class="graphical">
+  <hr>
 
-<!-- <p>
-<em>Replace the image filename with your actual graphical abstract image.</em>
-</p> -->
-<hr style="border: 0; border-top: 1px solid #ddd; margin-top: 40px;">
-    <h2>Cite This Work</h2>
-    <p>If you find this research or the modeling framework useful in your work, please cite it using the format below:</p>
-    
-    <pre style="background: #f6f8fa; border: 1px solid #ddd; border-radius: 6px; padding: 15px; overflow-x: auto; font-family: monospace; font-size: 14px; line-height: 1.5; color: #333;">
-@article{singh2025mathematical,
+  <h2>Cite This Work</h2>
+  <p>If you find this research or the modeling framework useful in your work, please cite it using the format below:</p>
+
+  <!-- FIX 6: Copy-to-clipboard wrapper -->
+  <div class="cite-wrapper">
+    <button class="copy-btn" onclick="copyBibTeX()" id="copyBtn">Copy</button>
+    <pre id="bibtex">@article{singh2025mathematical,
   title={Mathematical modeling and simulation of Mg-CO2 primary battery for hydrogen generation and CO2 utilization},
   author={Singh, R. K. and Ghosh, P. C. and Ramadesigan, V.},
   journal={Electrochimica Acta},
@@ -143,9 +268,18 @@ sustainable and environmentally friendly energy solution.
   publisher={Elsevier},
   doi={10.1016/j.electacta.2025.146333}
 }</pre>
+  </div>
 
+  <script>
+    function copyBibTeX() {
+      const text = document.getElementById('bibtex').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied!';
+        setTimeout(() => { btn.textContent = 'Copy'; }, 2000);
+      });
+    }
+  </script>
 
-
-    
 </body>
 </html>
