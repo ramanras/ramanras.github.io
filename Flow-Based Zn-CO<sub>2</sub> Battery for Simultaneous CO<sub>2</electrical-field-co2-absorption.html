@@ -4,29 +4,32 @@
 <head>
 
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-
+  <!-- SEO -->
   <meta name="description"
-        content="Electrical Field Effect on CO2 Absorption and Chemisorption in a Rectangular Bubble Column. Raman Kumar Singh, Prakash Chandra Ghosh, Venkatasailanathan Ramadesigan.">
+        content="Electrical Field Effect on CO2 Absorption and Chemisorption in a Rectangular Bubble Column. Raman Kumar Singh, Prakash Chandra Ghosh, Venkatasailanathan Ramadesigan. COMSOL Conference, 2023.">
 
-
+  <!-- Open Graph -->
   <meta property="og:title"
-        content="Electrical Field Effect on CO₂ Absorption and Chemisorption">
+        content="Electrical Field Effect on CO₂ Absorption and Chemisorption in a Rectangular Bubble Column">
 
   <meta property="og:description"
-        content="Three-dimensional multiphase modeling of CO₂ absorption and chemisorption under an applied electric field.">
+        content="Three-dimensional multiphase modeling of CO₂ absorption and chemisorption in a rectangular bubble column under an applied electric field.">
 
   <meta property="og:type"
         content="article">
+
+  <meta property="og:url"
+        content="https://ramanras.github.io/electrical-field-co2-absorption.html">
 
 
   <title>
     Electrical Field Effect on CO₂ Absorption | Raman Kumar Singh
   </title>
 
+
+  <!-- Google Font -->
 
   <link rel="preconnect"
         href="https://fonts.googleapis.com">
@@ -42,264 +45,273 @@
   <style>
 
     body {
-
       font-family: 'DM Sans', sans-serif;
-
       max-width: 900px;
-
       margin: auto;
-
       padding: 40px 20px;
-
       line-height: 1.8;
-
       color: #222;
-
+      background: #ffffff;
     }
 
 
     h1 {
-
       color: #1a5c9a;
-
-      line-height: 1.45;
-
+      line-height: 1.4;
+      margin-top: 12px;
       margin-bottom: 18px;
-
     }
 
 
     h2 {
-
       color: #1a5c9a;
-
       margin-top: 36px;
-
+      margin-bottom: 14px;
     }
 
 
     .back {
-
       color: #1a5c9a;
-
       text-decoration: none;
-
       font-size: 15px;
-
     }
 
 
     .back:hover {
-
       text-decoration: underline;
-
     }
 
+
+    /* Conference badge */
 
     .pub-type {
-
       display: inline-block;
-
       background: #eaf2fb;
-
       color: #1a5c9a;
-
       font-size: 13px;
-
       font-weight: 600;
-
       padding: 3px 10px;
-
       border-radius: 4px;
-
-      margin-top: 20px;
-
       margin-bottom: 10px;
-
       letter-spacing: 0.03em;
-
     }
 
 
+    /* Paper metadata */
+
     .paper-meta {
-
       color: #666;
-
       margin-top: 8px;
-
       margin-bottom: 18px;
-
       font-size: 15px;
+      line-height: 1.65;
+      font-weight: 400;
+    }
 
-      line-height: 1.6;
 
+    .paper-meta div {
+      margin-bottom: 2px;
+    }
+
+
+    .paper-meta a {
+      color: #1a5c9a;
+      text-decoration: none;
+    }
+
+
+    .paper-meta a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* Buttons */
+
+    .btn {
+      display: inline-block;
+      padding: 10px 18px;
+      margin-right: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+
+    .comsol-btn {
+      background: #1a5c9a;
+      color: white;
+    }
+
+
+    .comsol-btn:hover {
+      background: #154e84;
     }
 
 
     .request-btn {
-
-      display: inline-block;
-
-      padding: 10px 18px;
-
-      border-radius: 5px;
-
-      text-decoration: none;
-
-      font-weight: 600;
-
-      font-size: 15px;
-
       background: #2a7a4b;
-
       color: white;
-
     }
 
 
     .request-btn:hover {
-
       background: #22623c;
-
     }
 
 
+    /* Text */
+
     .abstract-text {
-
       text-align: justify;
-
     }
 
 
     .keywords {
-
       margin-top: 15px;
-
       font-size: 15px;
-
     }
 
 
+    /* Highlights */
+
     .highlights {
-
       background: #f6f8fa;
-
       border-left: 4px solid #1a5c9a;
-
-      padding: 15px 20px;
-
+      padding: 16px 20px;
       margin-top: 15px;
-
       border-radius: 5px;
-
     }
 
 
     .highlights ul {
-
       margin: 0;
-
       padding-left: 22px;
-
     }
 
 
     .highlights li {
-
-      margin-bottom: 7px;
-
-    }
-
-
-    hr {
-
-      border: 0;
-
-      border-top: 1px solid #ddd;
-
-      margin-top: 36px;
-
       margin-bottom: 8px;
-
     }
 
+
+    /* Research cards */
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-top: 18px;
+    }
+
+
+    .research-card {
+      background: #f8fafc;
+      border: 1px solid #e1e5e9;
+      border-radius: 6px;
+      padding: 16px;
+    }
+
+
+    .research-card strong {
+      color: #1a5c9a;
+    }
+
+
+    /* External resource */
+
+    .resource-box {
+      background: #f6f8fa;
+      border: 1px solid #e1e5e9;
+      border-radius: 6px;
+      padding: 18px 20px;
+      margin-top: 15px;
+    }
+
+
+    .resource-box p {
+      margin-top: 0;
+    }
+
+
+    /* Citation */
 
     .citation-box {
-
       position: relative;
-
     }
 
 
     .copy-btn {
-
       position: absolute;
-
       top: 10px;
-
       right: 10px;
-
       background: #1a5c9a;
-
       color: white;
-
       border: none;
-
       border-radius: 4px;
-
-      padding: 4px 12px;
-
+      padding: 5px 12px;
       font-size: 13px;
-
       cursor: pointer;
-
       font-family: 'DM Sans', sans-serif;
-
       font-weight: 600;
-
     }
 
 
     .copy-btn:hover {
-
       background: #154e84;
-
     }
 
 
     pre {
-
       background: #f6f8fa;
-
       border: 1px solid #ddd;
-
       border-radius: 6px;
-
       padding: 15px;
-
-      padding-right: 80px;
-
+      padding-right: 85px;
       overflow-x: auto;
-
       font-family: monospace;
-
       font-size: 14px;
-
       line-height: 1.5;
-
       color: #333;
-
+      white-space: pre-wrap;
     }
 
 
+    /* Horizontal line */
+
+    hr {
+      border: 0;
+      border-top: 1px solid #ddd;
+      margin-top: 36px;
+      margin-bottom: 8px;
+    }
+
+
+    /* Responsive */
+
     @media (max-width: 600px) {
 
-      .request-btn {
+      body {
+        padding: 25px 15px;
+      }
 
+      h1 {
+        font-size: 27px;
+      }
+
+      .btn {
         display: block;
-
+        margin-right: 0;
         text-align: center;
+      }
 
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      pre {
+        font-size: 12px;
       }
 
     }
@@ -312,7 +324,9 @@
 <body>
 
 
-  <!-- BACK -->
+  <!-- =====================================================
+       BACK TO PUBLICATIONS
+       ===================================================== -->
 
   <a class="back"
      href="index.html">
@@ -322,18 +336,24 @@
   </a>
 
 
-  <!-- TYPE -->
+  <!-- =====================================================
+       CONFERENCE BADGE
+       ===================================================== -->
 
-  <p style="margin-bottom:0; margin-top:20px;">
+  <p style="margin-bottom: 0; margin-top: 20px;">
 
     <span class="pub-type">
-      Conference Publication
+
+      COMSOL Conference · 2023
+
     </span>
 
   </p>
 
 
-  <!-- TITLE -->
+  <!-- =====================================================
+       TITLE
+       ===================================================== -->
 
   <h1>
 
@@ -343,24 +363,62 @@
   </h1>
 
 
-  <!-- AUTHORS / AFFILIATION -->
+  <!-- =====================================================
+       AUTHORS AND PUBLICATION INFORMATION
+       ===================================================== -->
 
   <div class="paper-meta">
 
-    Raman Kumar Singh, Prakash Chandra Ghosh and
-    Venkatasailanathan Ramadesigan
+    <div>
 
-    <br>
+      Raman Kumar Singh, Prakash Chandra Ghosh and
+      Venkatasailanathan Ramadesigan
 
-    Department of Energy Science and Engineering,
-    Indian Institute of Technology Bombay, Mumbai, India
+    </div>
+
+
+    <div>
+
+      Department of Energy Science and Engineering,
+      Indian Institute of Technology Bombay, Mumbai, India
+
+    </div>
+
+
+    <div>
+
+      <em>COMSOL Conference</em> · 2023
+
+      &nbsp;·&nbsp;
+
+      <a href="https://www.comsol.com/paper/electrical-field-effect-on-co2-absorption-and-chemisorption-in-a-rectangular-bubble-column-by-comsol-128161"
+         target="_blank"
+         rel="noopener">
+
+        COMSOL Paper ↗
+
+      </a>
+
+    </div>
 
   </div>
 
 
-  <!-- REQUEST FULL TEXT -->
+  <!-- =====================================================
+       BUTTONS
+       ===================================================== -->
 
-  <a class="request-btn"
+  <a class="btn comsol-btn"
+     href="https://www.comsol.com/paper/electrical-field-effect-on-co2-absorption-and-chemisorption-in-a-rectangular-bubble-column-by-comsol-128161"
+     target="_blank"
+     rel="noopener">
+
+    📄 View COMSOL Paper
+
+  </a>
+
+
+  <a class="btn request-btn"
      href="mailto:ramansingh0098@gmail.com?subject=Request%20Full%20Text%20-%20Electrical%20Field%20Effect%20on%20CO2%20Absorption">
 
     ✉ Request Full Text
@@ -371,7 +429,9 @@
   <hr>
 
 
-  <!-- ABSTRACT -->
+  <!-- =====================================================
+       ABSTRACT
+       ===================================================== -->
 
   <h2>
     Abstract
@@ -381,43 +441,41 @@
   <p class="abstract-text">
 
     The chemisorption and absorption of CO<sub>2</sub> bubbles
-    have been extensively studied and modelled in the literature.
-    CO<sub>2</sub> gas is converted to aqueous CO<sub>2</sub>,
-    which produces OH<sup>−</sup>, HCO<sub>3</sub><sup>−</sup>
-    and CO<sub>3</sub><sup>2−</sup> ions in the solution.
+    have been extensively studied and modeled in the literature.
+    CO<sub>2</sub> gas is converted into aqueous CO<sub>2</sub>,
+    which subsequently produces OH<sup>−</sup>,
+    HCO<sub>3</sub><sup>−</sup>, and CO<sub>3</sub><sup>2−</sup>
+    ions in the solution.
 
-    In this study, a three-dimensional multiphase model of a
-    CO<sub>2</sub> bubble column is simulated with and without
-    an electric field using COMSOL Multiphysics.
+    This study presents a three-dimensional CO<sub>2</sub>
+    bubble-column model developed in COMSOL Multiphysics.
+    Two cases are investigated: a bubble column without an
+    applied electric field and a bubble column subjected to
+    an electric field.
 
-    The first model is developed using the Euler–Euler model
-    and simulated using the bubble flow and dilute solution
-    theory module in COMSOL, validated against data obtained
-    from existing literature.
+    The first model uses the Euler–Euler formulation together
+    with the Bubble Flow and Dilute Solution Theory interfaces
+    and is validated against existing literature.
 
-    The second model builds upon the first model by considering
-    the electrostatic interaction between the charged species
-    and the electrical field, employing the Nernst–Planck equation.
+    The second model extends the framework by accounting for
+    electrostatic interactions between charged species and the
+    applied electric field through the Nernst–Planck equation.
 
-    Simulation results from the second model indicate that the
-    presence of an electrical field significantly impacts the
-    CO<sub>2</sub> chemisorption process in the rectangular
-    bubble column.
+    The results demonstrate that the applied electric field
+    modifies the distribution of charged species and their
+    concentration gradients, thereby influencing the
+    CO<sub>2</sub> chemisorption process and mass-transfer
+    behavior.
 
-    The applied field alters the distribution of charged species,
-    influencing concentration gradients and enhancing mass
-    transfer rates.
-
-    A parametric study is conducted on the applied electric field.
-    The findings of this study can inform the design of novel
-    CO<sub>2</sub> capture systems, offering potential avenues
-    for mitigating greenhouse gas emissions and advancing
-    sustainable energy practices.
+    A parametric study investigates mesh refinement, flow rate,
+    and applied electric field.
 
   </p>
 
 
-  <!-- KEYWORDS -->
+  <!-- =====================================================
+       KEYWORDS
+       ===================================================== -->
 
   <p class="keywords">
 
@@ -432,10 +490,12 @@
   </p>
 
 
-  <!-- HIGHLIGHTS -->
+  <!-- =====================================================
+       RESEARCH HIGHLIGHTS
+       ===================================================== -->
 
   <h2>
-    Key Highlights
+    Research Highlights
   </h2>
 
 
@@ -448,26 +508,34 @@
         model of a rectangular CO<sub>2</sub> bubble column.
       </li>
 
+
       <li>
-        Coupled Euler–Euler bubble flow with dilute solution
-        theory for CO<sub>2</sub> absorption and chemisorption.
+        Modeled CO<sub>2</sub> absorption and chemisorption
+        using Euler–Euler bubble flow and dilute solution theory.
       </li>
+
 
       <li>
         Incorporated the Nernst–Planck equation to account
-        for ionic migration under an applied electric field.
+        for electric-field-driven transport of charged species.
       </li>
 
-      <li>
-        Investigated the concentration distributions of
-        Na<sup>+</sup>, OH<sup>−</sup>,
-        HCO<sub>3</sub><sup>−</sup>, and
-        CO<sub>3</sub><sup>2−</sup>.
-      </li>
 
       <li>
-        Demonstrated the influence of electric-field-driven
-        ion migration on CO<sub>2</sub> chemisorption.
+        Investigated the effect of an applied electric field
+        on the distribution of ionic species.
+      </li>
+
+
+      <li>
+        Studied the influence of mesh refinement, flow rate,
+        and applied electric field on the model response.
+      </li>
+
+
+      <li>
+        Developed a modeling framework relevant to advanced
+        CO<sub>2</sub> capture and conversion systems.
       </li>
 
     </ul>
@@ -475,7 +543,9 @@
   </div>
 
 
-  <!-- MODEL -->
+  <!-- =====================================================
+       MODELING APPROACH
+       ===================================================== -->
 
   <h2>
     Modeling Approach
@@ -484,51 +554,183 @@
 
   <p class="abstract-text">
 
-    A three-dimensional transient Euler–Euler model is used to
-    describe the gas and liquid phases in the rectangular bubble
-    column. CO<sub>2</sub> transfer from the gas phase to the
-    liquid phase is coupled with dilute solution theory for
-    species transport and chemical reactions.
+    The study uses a three-dimensional multiphase model to
+    describe the interaction between CO<sub>2</sub> gas bubbles
+    and an aqueous electrolyte inside a rectangular bubble column.
 
-    For the electric-field case, the transport of ionic species
-    additionally accounts for migration caused by the applied
-    electric potential through the Nernst–Planck equation.
-
-  </p>
-
-
-  <p class="abstract-text">
-
-    The model considers aqueous CO<sub>2</sub> together with
-    Na<sup>+</sup>, OH<sup>−</sup>, HCO<sub>3</sub><sup>−</sup>
-    and CO<sub>3</sub><sup>2−</sup> species. The CO<sub>2</sub>
-    absorption and subsequent reactions lead to the formation
-    of bicarbonate and carbonate species.
+    The model is divided into two stages. The first stage
+    describes the bubble-column system without an electric field.
+    The second stage extends the model by introducing the
+    electrostatic effects associated with an applied electric
+    field.
 
   </p>
 
 
-  <!-- SIMULATION -->
+  <div class="research-grid">
+
+
+    <div class="research-card">
+
+      <strong>Euler–Euler Bubble Flow</strong>
+
+      <br><br>
+
+      The Euler–Euler formulation is used to describe the
+      gas and liquid phases and their interaction within the
+      rectangular bubble column.
+
+    </div>
+
+
+    <div class="research-card">
+
+      <strong>CO₂ Absorption</strong>
+
+      <br><br>
+
+      Gas-phase CO<sub>2</sub> is transferred from the bubbles
+      into the aqueous phase and represented through the
+      multiphase mass-transfer framework.
+
+    </div>
+
+
+    <div class="research-card">
+
+      <strong>Dilute Solution Theory</strong>
+
+      <br><br>
+
+      Used to describe the transport and reaction of dissolved
+      CO<sub>2</sub> and ionic species in the electrolyte.
+
+    </div>
+
+
+    <div class="research-card">
+
+      <strong>Nernst–Planck Equation</strong>
+
+      <br><br>
+
+      The electric-field model accounts for diffusion,
+      convection, and electric-field-driven migration of
+      charged species.
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       SPECIES
+       ===================================================== -->
 
   <h2>
-    Simulation Setup
+    Species and Chemical Processes
   </h2>
 
 
   <p class="abstract-text">
 
-    COMSOL Multiphysics 6.1 was used to simulate the transient
-    model. The model utilizes bubbly-flow and laminar-flow
-    physics for gas–liquid transport, tertiary electroneutrality
-    for ionic species transport in the presence of an electric
-    field, and transport of dilute species for the non-ionic
-    species. The reported relative tolerance was
-    1 × 10<sup>−3</sup>.
+    The model considers the transformation of gaseous
+    CO<sub>2</sub> into dissolved CO<sub>2</sub> followed by
+    reactions involving hydroxide and carbonate species.
+
+    The resulting aqueous system contains charged species
+    including OH<sup>−</sup>, HCO<sub>3</sub><sup>−</sup>,
+    and CO<sub>3</sub><sup>2−</sup>.
+
+    When an electric field is applied, the charged species
+    experience electrostatic forces that modify their spatial
+    distributions within the bubble column.
 
   </p>
 
 
-  <!-- VALIDATION -->
+  <!-- =====================================================
+       ELECTRIC FIELD
+       ===================================================== -->
+
+  <h2>
+    Effect of the Electric Field
+  </h2>
+
+
+  <p class="abstract-text">
+
+    The applied electric field changes the distribution of
+    charged species within the electrolyte.
+
+    Positively and negatively charged species migrate in
+    opposite directions under the electric field, resulting
+    in modified local concentration gradients.
+
+    These changes influence the local chemical environment
+    surrounding the dissolved CO<sub>2</sub> and consequently
+    affect the chemisorption behavior.
+
+  </p>
+
+
+  <div class="research-grid">
+
+
+    <div class="research-card">
+
+      <strong>Without Electric Field</strong>
+
+      <br><br>
+
+      The charged species are transported through the
+      conventional multiphase and species-transport
+      mechanisms.
+
+    </div>
+
+
+    <div class="research-card">
+
+      <strong>With Electric Field</strong>
+
+      <br><br>
+
+      Charged species additionally undergo migration caused
+      by the applied electric potential.
+
+    </div>
+
+
+    <div class="research-card">
+
+      <strong>Ion Redistribution</strong>
+
+      <br><br>
+
+      The electric field modifies the spatial concentration
+      distribution of the ionic species.
+
+    </div>
+
+
+    <div class="research-card">
+
+      <strong>CO₂ Chemisorption</strong>
+
+      <br><br>
+
+      Changes in local ionic concentrations influence the
+      chemical conversion of dissolved CO<sub>2</sub>.
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       MODEL VALIDATION
+       ===================================================== -->
 
   <h2>
     Model Validation
@@ -537,112 +739,142 @@
 
   <p class="abstract-text">
 
-    The simulations were performed without an electric field
-    for up to 30 seconds and validated against literature results
-    for CO<sub>3</sub><sup>2−</sup> concentration. The reported
-    comparison showed good agreement between the present model
-    and the literature data. A mesh containing 437 domain
-    elements was used for the study.
+    The model without an electric field was validated against
+    existing literature data for the CO<sub>2</sub> bubble-column
+    system.
+
+    The comparison showed agreement between the simulated
+    concentration behavior and the reported literature results,
+    providing a basis for extending the model to the
+    electric-field case.
 
   </p>
 
 
-  <!-- ELECTRIC FIELD -->
+  <!-- =====================================================
+       PARAMETRIC STUDY
+       ===================================================== -->
 
   <h2>
-    Effect of Electric Field
+    Parametric Study
   </h2>
 
 
-  <p class="abstract-text">
+  <div class="highlights">
 
-    The applied electric field affects the movement of the
-    charged species in the electrolyte. Positively charged
-    species are attracted toward the negative pole, whereas
-    negatively charged species migrate toward the positive pole.
+    <ul>
 
-    In the bubble column, the electric field therefore modifies
-    the local concentration distributions of Na<sup>+</sup>,
-    OH<sup>−</sup>, HCO<sub>3</sub><sup>−</sup> and
-    CO<sub>3</sub><sup>2−</sup>, influencing the local
-    chemisorption behavior.
-
-  </p>
+      <li>
+        <strong>Mesh refinement:</strong>
+        investigated to establish an appropriate computational
+        mesh for the three-dimensional bubble-column model.
+      </li>
 
 
-  <!-- RESULTS -->
+      <li>
+        <strong>Flow rate:</strong>
+        investigated to understand its influence on gas–liquid
+        transport and CO<sub>2</sub> absorption behavior.
+      </li>
+
+
+      <li>
+        <strong>Applied electric field:</strong>
+        investigated to determine its influence on ionic
+        distributions and CO<sub>2</sub> chemisorption.
+      </li>
+
+    </ul>
+
+  </div>
+
+
+  <!-- =====================================================
+       KEY FINDINGS
+       ===================================================== -->
 
   <h2>
-    Results and Discussion
+    Key Findings
   </h2>
 
 
-  <p class="abstract-text">
+  <div class="highlights">
 
-    The volume-averaged gas-phase fraction increases rapidly
-    initially and remains approximately constant for a period
-    before increasing again. The reported gas-phase fraction
-    does not show a significant change with the applied voltage
-    because the same mass-transfer rate was used at the
-    investigated voltages.
+    <ul>
 
-  </p>
-
-
-  <p class="abstract-text">
-
-    The concentration of OH<sup>−</sup> decreases with time,
-    indicating its consumption during the formation of
-    bicarbonate and carbonate species. The spatial distribution
-    of carbonate ions changes substantially under an applied
-    electric field, with negatively charged CO<sub>3</sub><sup>2−</sup>
-    ions oriented toward the positive side of the bubble column.
-
-  </p>
+      <li>
+        The presence of an electric field significantly affects
+        the CO<sub>2</sub> chemisorption process in the
+        rectangular bubble column.
+      </li>
 
 
-  <p class="abstract-text">
-
-    Increasing the applied potential changes the concentration
-    distributions of aqueous CO<sub>2</sub> and carbonate species,
-    demonstrating that electric-field-driven ionic migration can
-    influence the CO<sub>2</sub> conversion environment inside
-    the bubble column.
-
-  </p>
+      <li>
+        The applied field changes the distribution of charged
+        species within the aqueous phase.
+      </li>
 
 
-  <!-- CONCLUSION -->
+      <li>
+        Electric-field-driven migration modifies concentration
+        gradients of the ionic species.
+      </li>
+
+
+      <li>
+        The resulting changes in concentration gradients
+        influence the mass-transfer and chemisorption behavior
+        of CO<sub>2</sub>.
+      </li>
+
+
+      <li>
+        The modeling framework provides a basis for investigating
+        electric-field-assisted CO<sub>2</sub> capture systems.
+      </li>
+
+    </ul>
+
+  </div>
+
+
+  <!-- =====================================================
+       CONFERENCE RESOURCE
+       ===================================================== -->
 
   <h2>
-    Conclusion
+    Conference Resources
   </h2>
 
 
-  <p class="abstract-text">
+  <div class="resource-box">
 
-    A transient three-dimensional multiphase bubble-column model
-    was developed using the Euler–Euler model, dilute solution
-    theory, and the Nernst–Planck equation in the presence of
-    an electric field.
+    <p>
 
-    The model demonstrates that an applied electric field changes
-    the distribution of ionic species and affects the concentration
-    trends of CO<sub>2</sub>, HCO<sub>3</sub><sup>−</sup>,
-    OH<sup>−</sup> and CO<sub>3</sub><sup>2−</sup>.
+      The official COMSOL publication page provides access
+      to the conference paper and presentation.
 
-    The modeling framework can be extended to investigate
-    electrochemical devices in which CO<sub>2</sub> is utilized
-    in aqueous electrolytes, including metal–CO<sub>2</sub>
-    systems and electrochemical CO<sub>2</sub> reduction.
+    </p>
 
-  </p>
 
+    <a class="btn comsol-btn"
+       href="https://www.comsol.com/paper/electrical-field-effect-on-co2-absorption-and-chemisorption-in-a-rectangular-bubble-column-by-comsol-128161"
+       target="_blank"
+       rel="noopener">
+
+      📄 Paper &amp; Presentation ↗
+
+    </a>
+
+  </div>
+
+
+  <!-- =====================================================
+       CITATION
+       ===================================================== -->
 
   <hr>
 
-
-  <!-- CITATION -->
 
   <h2>
     Cite This Work
@@ -651,13 +883,14 @@
 
   <p>
 
-    If you use this modeling framework or results in your work,
-    please cite the conference contribution.
+    If you use this work or its modeling framework in your
+    research, please cite the conference contribution.
 
   </p>
 
 
   <div class="citation-box">
+
 
     <button class="copy-btn"
             onclick="copyCitation()"
@@ -668,13 +901,20 @@
     </button>
 
 
-    <pre id="citation">@conference{singh_co2_electric_field,
+    <pre id="citation">@conference{singh2023electrical,
   title={Electrical Field Effect on CO2 Absorption and Chemisorption in a Rectangular Bubble Column},
-  author={Singh, Raman Kumar and Ghosh, Prakash Chandra and Ramadesigan, Venkatasailanathan}
+  author={Singh, Raman Kumar and Ghosh, Prakash Chandra and Ramadesigan, Venkatasailanathan},
+  year={2023},
+  organization={COMSOL Conference}
 }</pre>
+
 
   </div>
 
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
 
   <script>
 
