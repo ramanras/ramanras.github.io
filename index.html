@@ -1062,6 +1062,45 @@ My doctoral research investigates transport phenomena and reaction mechanisms in
       a.classList.toggle('active', a.getAttribute('href') === '#' + cur);
     });
   });
+
+
+
+// ── PHOTO CAROUSEL ──
+
+const photoTrack = document.getElementById('photoTrack');
+const photoPrev = document.getElementById('photoPrev');
+const photoNext = document.getElementById('photoNext');
+
+function scrollPhotos(direction) {
+  const card = photoTrack.querySelector('.photo-card');
+  if (!card) return;
+
+  const gap = parseFloat(
+    getComputedStyle(photoTrack).gap
+  ) || 0;
+
+  photoTrack.scrollBy({
+    left: direction * (card.offsetWidth + gap),
+    behavior: 'smooth'
+  });
+}
+
+function updatePhotoArrows() {
+  const maxScroll =
+    photoTrack.scrollWidth - photoTrack.clientWidth;
+
+  photoPrev.disabled = photoTrack.scrollLeft <= 2;
+  photoNext.disabled =
+    photoTrack.scrollLeft >= maxScroll - 2;
+}
+
+photoTrack.addEventListener('scroll', updatePhotoArrows);
+window.addEventListener('resize', updatePhotoArrows);
+window.addEventListener('load', updatePhotoArrows);
+
+updatePhotoArrows();
+
+  
 </script>
 </body>
 </html>
