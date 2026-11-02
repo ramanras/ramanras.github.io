@@ -330,6 +330,138 @@
   .award-title { font-family: 'DM Serif Display', serif; font-size: 1.15rem; margin-bottom: 0.4rem; }
   .award-desc { font-size: 0.87rem; color: var(--ink-2); line-height: 1.6; }
 
+
+
+/* ── CONFERENCE PHOTO CAROUSEL ── */
+
+.photo-carousel {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+.photo-track {
+  display: flex;
+  gap: 22px;
+  width: 100%;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding: 5px 2px 15px;
+}
+
+.photo-track::-webkit-scrollbar {
+  display: none;
+}
+
+.photo-card {
+  flex: 0 0 calc((100% - 44px) / 3);
+  min-width: 0;
+  scroll-snap-align: start;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  transition: transform 0.2s ease;
+}
+
+.photo-card:hover {
+  transform: translateY(-4px);
+}
+
+.photo-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-caption {
+  padding: 1rem;
+  text-align: center;
+}
+
+.photo-caption h3 {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1rem;
+  color: var(--ink);
+  margin-bottom: 0.4rem;
+}
+
+.photo-caption p {
+  font-size: 0.78rem;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+
+.carousel-arrow {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: var(--card-bg);
+  color: var(--accent);
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: var(--shadow);
+}
+
+.carousel-arrow:hover {
+  background: var(--accent);
+  color: white;
+}
+
+.carousel-arrow:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.photo-note {
+  text-align: center;
+  color: var(--ink-3);
+  font-size: 0.75rem;
+  margin-top: 0.8rem;
+}
+
+@media (max-width: 700px) {
+  .photo-card {
+    flex: 0 0 75%;
+  }
+
+  .photo-card img {
+    height: 210px;
+  }
+
+  .photo-carousel {
+    gap: 7px;
+  }
+
+  .carousel-arrow {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 450px) {
+  .photo-card {
+    flex: 0 0 88%;
+  }
+
+  .photo-card img {
+    height: 200px;
+  }
+}
+  
+
   /* ── CONTACT ── */
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
   .contact-item {
@@ -390,6 +522,7 @@
     <li><a href="#research">Research</a></li>
     <li><a href="#publications">Publications</a></li>
     <li><a href="#awards">Awards</a></li>
+    <li><a href="#Photos">Photos</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -706,62 +839,115 @@ My doctoral research investigates transport phenomena and reaction mechanisms in
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact" class="section fade-in">
-  <h2 class="section-title">Contact</h2>
+
+<!-- CONFERENCE PHOTOS -->
+<section id="photos" class="section fade-in">
+
+  <h2 class="section-title">Conference Photos</h2>
   <div class="section-rule"></div>
-  <div class="contact-grid">
-    <a href="mailto:ramanras@iitb.ac.in" class="contact-item">
-      <span class="contact-icon">✉</span>
-      <div>
-        <div class="contact-label">Institute Email</div>
-        <div class="contact-value">ramanras@iitb.ac.in</div>
+
+  <div class="photo-carousel">
+
+    <!-- LEFT ARROW -->
+    <button class="carousel-arrow"
+            id="photoPrev"
+            type="button"
+            aria-label="Previous photos"
+            onclick="scrollPhotos(-1)">
+      &#10094;
+    </button>
+
+    <!-- PHOTO TRACK -->
+    <div class="photo-track" id="photoTrack">
+
+      <!-- PHOTO 1 -->
+      <div class="photo-card">
+        <img src="Conference_photo/photo1.jpg"
+             alt="Conference presentation">
+        <div class="photo-caption">
+          <h3>Poster Presentation</h3>
+          <p>SustainX – ACE 2025 & 4th CO2India Meet, IIT Madras, Chennai</p>
+        </div>
       </div>
-    </a>
-    <a href="mailto:ramansingh0098@gmail.com" class="contact-item">
-     <span class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></span>
-      <div>
-        <div class="contact-label">Personal Email</div>
-        <div class="contact-value">ramansingh0098@gmail.com</div>
+
+      <!-- PHOTO 2 -->
+      <div class="photo-card">
+        <img src="Conference_photo/photo2.jpg"
+             alt="Conference participation">
+        <div class="photo-caption">
+          <h3>International Conference</h3>
+          <p>ICNEA 2025, Tokyo, Japan</p>
+        </div>
       </div>
-    </a>
-    <a href="https://www.linkedin.com/in/ramanras/" target="_blank" class="contact-item">
-      <span class="contact-icon">💼</span>
-      <div>
-        <div class="contact-label">LinkedIn</div>
-        <div class="contact-value">linkedin.com/in/ramanras</div>
+
+      <!-- PHOTO 3 -->
+      <div class="photo-card">
+        <img src="Conference_photo/photo3.jpg"
+             alt="Research presentation">
+        <div class="photo-caption">
+          <h3>Research Presentation</h3>
+          <p>13th Asian Conference on Electrochemical Power Sources, 2026</p>
+        </div>
       </div>
-    </a>
-    <a href="https://scholar.google.com/citations?hl=en&user=HyjhCJsAAAAJ" target="_blank" class="contact-item">
-      <span class="contact-icon">🎓</span>
-      <div>
-        <div class="contact-label">Google Scholar</div>
-        <div class="contact-value">View Publications</div>
+
+      <!-- PHOTO 4 -->
+      <div class="photo-card">
+        <img src="Conference_photo/photo4.jpg"
+             alt="Academic conference">
+        <div class="photo-caption">
+          <h3>Academic Conference</h3>
+          <p>DAE-BRNS Conference, BARC, Mumbai, 2025</p>
+        </div>
       </div>
-    </a>
-    <a href="https://orcid.org/0009-0000-3515-1392" target="_blank" class="contact-item">
-      <span class="contact-icon">🔬</span>
-      <div>
-        <div class="contact-label">ORCID</div>
-        <div class="contact-value">0009-0000-3515-1392</div>
+
+      <!-- PHOTO 5 -->
+      <div class="photo-card">
+        <img src="Conference_photo/photo5.jpg"
+             alt="Conference event">
+        <div class="photo-caption">
+          <h3>Conference Participation</h3>
+          <p>37th Topical Meeting of the International Society of Electrochemistry, Italy, 2024</p>
+        </div>
       </div>
-    </a>
-    <a href="https://www.ese.iitb.ac.in/" target="_blank" class="contact-item">
-      <span class="contact-icon">🏛</span>
-      <div>
-        <div class="contact-label">Department</div>
-        <div class="contact-value">ESE, IIT Bombay</div>
+
+      <!-- PHOTO 6 -->
+      <div class="photo-card">
+        <img src="Conference_photo/photo6.jpg"
+             alt="Academic activities">
+        <div class="photo-caption">
+          <h3>Academic Activities</h3>
+          <p>Department of Energy Science and Engineering, IIT Bombay</p>
+        </div>
       </div>
-    </a>
+
+    </div>
+
+    <!-- RIGHT ARROW -->
+    <button class="carousel-arrow"
+            id="photoNext"
+            type="button"
+            aria-label="Next photos"
+            onclick="scrollPhotos(1)">
+      &#10095;
+    </button>
+
   </div>
 
-<!-- Photos -->
-  
-</Photos>
+  <p class="photo-note">
+    Use the arrows to explore more photographs.
+  </p>
+
+</section>
+
+
+<!-- CONTACT -->
 <section id="contact" class="section fade-in">
+
   <h2 class="section-title">Contact</h2>
   <div class="section-rule"></div>
+
   <div class="contact-grid">
+
     <a href="mailto:ramanras@iitb.ac.in" class="contact-item">
       <span class="contact-icon">✉</span>
       <div>
@@ -769,43 +955,65 @@ My doctoral research investigates transport phenomena and reaction mechanisms in
         <div class="contact-value">ramanras@iitb.ac.in</div>
       </div>
     </a>
+
     <a href="mailto:ramansingh0098@gmail.com" class="contact-item">
-     <span class="contact-icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="#EA4335" d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/></svg></span>
+      <span class="contact-icon">
+        <svg xmlns="http://www.w3.org/2000/svg"
+             width="24" height="24"
+             viewBox="0 0 24 24">
+          <path fill="#EA4335"
+            d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.273H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.910 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+        </svg>
+      </span>
       <div>
         <div class="contact-label">Personal Email</div>
         <div class="contact-value">ramansingh0098@gmail.com</div>
       </div>
     </a>
-    <a href="https://www.linkedin.com/in/ramanras/" target="_blank" class="contact-item">
+
+    <a href="https://www.linkedin.com/in/ramanras/"
+       target="_blank" rel="noopener noreferrer"
+       class="contact-item">
       <span class="contact-icon">💼</span>
       <div>
         <div class="contact-label">LinkedIn</div>
         <div class="contact-value">linkedin.com/in/ramanras</div>
       </div>
     </a>
-    <a href="https://scholar.google.com/citations?hl=en&user=HyjhCJsAAAAJ" target="_blank" class="contact-item">
+
+    <a href="https://scholar.google.com/citations?hl=en&user=HyjhCJsAAAAJ"
+       target="_blank" rel="noopener noreferrer"
+       class="contact-item">
       <span class="contact-icon">🎓</span>
       <div>
         <div class="contact-label">Google Scholar</div>
         <div class="contact-value">View Publications</div>
       </div>
     </a>
-    <a href="https://orcid.org/0009-0000-3515-1392" target="_blank" class="contact-item">
+
+    <a href="https://orcid.org/0009-0000-3515-1392"
+       target="_blank" rel="noopener noreferrer"
+       class="contact-item">
       <span class="contact-icon">🔬</span>
       <div>
         <div class="contact-label">ORCID</div>
         <div class="contact-value">0009-0000-3515-1392</div>
       </div>
     </a>
-    <a href="https://www.ese.iitb.ac.in/" target="_blank" class="contact-item">
+
+    <a href="https://www.ese.iitb.ac.in/"
+       target="_blank" rel="noopener noreferrer"
+       class="contact-item">
       <span class="contact-icon">🏛</span>
       <div>
         <div class="contact-label">Department</div>
         <div class="contact-value">ESE, IIT Bombay</div>
       </div>
     </a>
+
   </div>
 </section>
+
 <footer>
   <p> Raman Kumar Singh · Department of Energy Science and Engineering, IIT Bombay</p>
   <!--<p style="margin-top:0.5rem;">Built with HTML/CSS · Hosted on GitHub Pages</p>-->
