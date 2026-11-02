@@ -334,131 +334,274 @@
 
 /* ── CONFERENCE PHOTO CAROUSEL ── */
 
-.photo-carousel {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.photo-carousel-wrap {
   position: relative;
   margin-top: 1.5rem;
 }
 
-.photo-track {
+.photo-carousel {
   display: flex;
-  gap: 22px;
-  width: 100%;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-  scrollbar-width: none;
-  padding: 5px 2px 15px;
+  align-items: center;
+  gap: 12px;
 }
 
-.photo-track::-webkit-scrollbar {
-  display: none;
+.photo-track {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+  flex: 1;
+  min-width: 0;
+  /* slide container — only one "page" (2 cards) visible at a time */
+  overflow: hidden;
+}
+
+/* each slide-page holds exactly 2 cards side by side */
+.photo-slide {
+  display: contents; /* lets the 2 cards sit directly in the grid */
 }
 
 .photo-card {
-  flex: 0 0 calc((100% - 22px) / 2);
-  min-width: 0;
-  scroll-snap-align: start;
   background: var(--card-bg);
   border: 1px solid var(--line);
   border-radius: var(--r);
   overflow: hidden;
   box-shadow: var(--shadow);
-  transition: transform 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 .photo-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 10px 32px rgba(15,17,23,0.13);
+}
+
+.photo-card-img-wrap {
+  position: relative;
+  overflow: hidden;
 }
 
 .photo-card img {
   width: 100%;
-  height: 220px;
+  height: 230px;
   object-fit: cover;
   display: block;
+  transition: transform 0.35s ease;
 }
+
+.photo-card:hover img {
+  transform: scale(1.04);
+}
+
+/* badge colours — now sits at bottom of card */
+.photo-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.63rem;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  line-height: 1.5;
+  width: fit-content;
+}
+.badge-oral   { background: rgba(26,92,154,0.12);  color: var(--accent);  border: 1px solid rgba(26,92,154,0.3); }
+.badge-poster { background: rgba(200,151,42,0.12); color: #a07820;        border: 1px solid rgba(200,151,42,0.35); }
+.badge-paper  { background: rgba(42,122,75,0.12);  color: #1d6138;        border: 1px solid rgba(42,122,75,0.3); }
 
 .photo-caption {
-  padding: 1rem;
-  text-align: center;
+  padding: 0.85rem 1rem 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
 }
 
-.photo-caption h3 {
+.photo-caption-title {
   font-family: 'DM Serif Display', serif;
-  font-size: 1rem;
+  font-size: 0.93rem;
   color: var(--ink);
-  margin-bottom: 0.4rem;
+  line-height: 1.4;
 }
 
-.photo-caption p {
-  font-size: 0.78rem;
+.photo-caption-venue {
+  font-size: 0.75rem;
   color: var(--ink-3);
-  line-height: 1.6;
+  line-height: 1.55;
+  flex: 1;
 }
 
+/* arrows */
 .carousel-arrow {
   flex-shrink: 0;
-  width: 38px;
-  height: 38px;
+  width: 38px; height: 38px;
   border: 1px solid var(--line);
   border-radius: 50%;
   background: var(--card-bg);
   color: var(--accent);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: var(--shadow);
+  line-height: 1;
+}
+.carousel-arrow:hover  { background: var(--accent); color: #fff; box-shadow: 0 4px 16px rgba(26,92,154,0.25); }
+.carousel-arrow:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* dots */
+.photo-dots {
   display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 1rem;
+}
+.photo-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--cream);
+  border: 1.5px solid var(--accent);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.photo-dot.active { background: var(--accent); }
+
+/* view-all link */
+.photo-view-all {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.25rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s;
+}
+.photo-view-all:hover { border-bottom-color: var(--accent); }
+
+/* ── LIGHTBOX ── */
+.lightbox-overlay {
+  display: none;
+  position: fixed; inset: 0; z-index: 999;
+  background: rgba(10,14,22,0.92);
+  backdrop-filter: blur(6px);
   align-items: center;
   justify-content: center;
-  transition: all 0.2s ease;
-  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+.lightbox-overlay.open { display: flex; }
+
+.lightbox-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 980px;
+  max-height: 88vh;
+  overflow-y: auto;
+  width: 100%;
+  padding-right: 4px;
+}
+.lightbox-grid::-webkit-scrollbar { width: 4px; }
+.lightbox-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+.lb-card {
+  border-radius: var(--r);
+  overflow: hidden;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
 }
 
-.carousel-arrow:hover {
-  background: var(--accent);
-  color: white;
+/* inner image deck — swipeable strip */
+.lb-img-deck {
+  position: relative;
 }
+.lb-img-strip {
+  display: flex;
+  overflow: hidden;
+}
+.lb-img-strip img {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+/* deck arrows — shown only when multiple images */
+.lb-deck-arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 28px; height: 28px;
+  background: rgba(10,14,22,0.65);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  border-radius: 50%;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  z-index: 2;
+}
+.lb-deck-arrow:hover { background: rgba(26,92,154,0.85); }
+.lb-deck-arrow.lb-prev { left: 7px; }
+.lb-deck-arrow.lb-next { right: 7px; }
+.lb-deck-arrow[hidden] { display: none; }
 
-.carousel-arrow:disabled {
-  opacity: 0.35;
-  cursor: not-allowed;
+/* deck dots */
+.lb-deck-dots {
+  position: absolute;
+  bottom: 6px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 4px;
 }
+.lb-deck-dot {
+  width: 5px; height: 5px; border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  transition: background 0.2s;
+}
+.lb-deck-dot.active { background: #fff; }
 
-.photo-note {
-  text-align: center;
-  color: var(--ink-3);
-  font-size: 0.75rem;
-  margin-top: 0.8rem;
+.lb-cap {
+  padding: 0.6rem 0.75rem 0.75rem;
+  display: flex; flex-direction: column; gap: 0.25rem;
 }
+.lb-cap-title { font-family: 'DM Serif Display',serif; font-size: 0.85rem; color: #fff; line-height: 1.35; }
+.lb-cap-venue { font-size: 0.71rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
+.lb-badge {
+  display: inline-block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem; letter-spacing: 0.07em; text-transform: uppercase;
+  padding: 0.15rem 0.5rem; border-radius: 20px; margin-bottom: 0.15rem;
+  width: fit-content;
+}
+.lb-badge.badge-oral   { background: rgba(26,92,154,0.25);  color: #7eb8f7; border: 1px solid rgba(26,92,154,0.4); }
+.lb-badge.badge-poster { background: rgba(200,151,42,0.25); color: #f0c96a; border: 1px solid rgba(200,151,42,0.4); }
+.lb-badge.badge-paper  { background: rgba(42,122,75,0.25);  color: #6fcf97; border: 1px solid rgba(42,122,75,0.4); }
+
+.lightbox-close {
+  position: fixed; top: 1.2rem; right: 1.4rem;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+  font-size: 1.3rem;
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s;
+  z-index: 1000;
+}
+.lightbox-close:hover { background: rgba(255,255,255,0.22); }
 
 @media (max-width: 700px) {
-  .photo-card {
-    flex: 0 0 75%;
-  }
-
-  .photo-card img {
-    height: 210px;
-  }
-
-  .photo-carousel {
-    gap: 7px;
-  }
-
-  .carousel-arrow {
-    width: 32px;
-    height: 32px;
-  }
+  .photo-track { grid-template-columns: 1fr; }
+  .photo-card img { height: 220px; }
+  .lightbox-grid { grid-template-columns: repeat(2, 1fr); }
 }
-
-@media (max-width: 450px) {
-  .photo-card {
-    flex: 0 0 88%;
-  }
-
-  .photo-card img {
-    height: 200px;
-  }
+@media (max-width: 420px) {
+  .lightbox-grid { grid-template-columns: 1fr; }
 }
   
 
@@ -841,134 +984,266 @@ My doctoral research investigates transport phenomena and reaction mechanisms in
 
 
 <!-- CONFERENCE PHOTOS -->
-<!-- CONFERENCE PHOTOS -->
 <section id="photos" class="section fade-in">
 
   <h2 class="section-title">Conference Photos</h2>
   <div class="section-rule"></div>
 
-  <div class="photo-carousel">
+  <div class="photo-carousel-wrap">
+    <div class="photo-carousel">
 
-    <!-- LEFT ARROW -->
-    <button class="carousel-arrow"
-            id="photoPrev"
-            type="button"
-            aria-label="Previous photos"
-            onclick="scrollPhotos(-1)">
-      &#10094;
-    </button>
+      <!-- LEFT ARROW -->
+      <button class="carousel-arrow" id="photoPrev" aria-label="Previous" onclick="slidePhotos(-1)">&#10094;</button>
 
-    <!-- PHOTO TRACK -->
-    <div class="photo-track" id="photoTrack">
+      <!-- TRACK: only 2 cards visible at once; JS hides/shows pairs -->
+      <div class="photo-track" id="photoTrack">
 
-      <!-- PHOTO 1 -->
-      <div class="photo-card">
-        <img src="Conference_photo/ACEPS2026.jpeg"
-             alt="ACEPS 13 conference">
-        <div class="photo-caption">
-          <h3>Conference Presentation</h3>
-          <p>13th Asian Conference on Electrochemical Power Sources (ACEPS 13, 2026), IISc, Bengaluru, India</p>
+        <!-- PAIR 1 -->
+        <div class="photo-card" data-page="0">
+          <div class="photo-card-img-wrap">
+            <img src="Conference_photo/ACEPS2026.jpeg" alt="Oral presentation at ACEPS 13, IISc Bengaluru, 2026">
+          </div>
+          <div class="photo-caption">
+            <div class="photo-caption-title">ACEPS 13 — 2026</div>
+            <div class="photo-caption-venue">13th Asian Conference on Electrochemical Power Sources · IISc, Bengaluru, India</div>
+            <span class="photo-badge badge-oral">Oral Presentation</span>
+          </div>
         </div>
+        <div class="photo-card" data-page="0">
+          <div class="photo-card-img-wrap">
+            <img src="Conference_photo/ICNEA2025.jpeg" alt="Oral presentation at ICNEA 2025, Tokyo">
+          </div>
+          <div class="photo-caption">
+            <div class="photo-caption-title">ICNEA 2025 — Tokyo</div>
+            <div class="photo-caption-venue">9th International Conference on New Energy and Applications · Tokyo, Japan</div>
+            <span class="photo-badge badge-oral">Oral Presentation</span>
+          </div>
+        </div>
+
+        <!-- PAIR 2 -->
+        <div class="photo-card" data-page="1">
+          <div class="photo-card-img-wrap">
+            <img src="Conference_photo/IIT Madras.JPG" alt="Best Poster Award at SustainX–ACE 2025, IIT Madras">
+          </div>
+          <div class="photo-caption">
+            <div class="photo-caption-title">SustainX – ACE 2025 &amp; 4th CO₂India Meet</div>
+            <div class="photo-caption-venue">IIT Madras, Chennai, India · <em>Best Poster Award</em></div>
+            <span class="photo-badge badge-poster">Poster Presentation 🏆</span>
+          </div>
+        </div>
+        <div class="photo-card" data-page="1">
+          <div class="photo-card-img-wrap">
+            <img src="Conference_photo/ICOSSE'25_NZ.jpg" alt="Oral presentation at ICOSSE 2025, Auckland">
+          </div>
+          <div class="photo-caption">
+            <div class="photo-caption-title">ICOSSE 2025 — Auckland</div>
+            <div class="photo-caption-venue">International Congress on Sustainability Science &amp; Engineering · Auckland, New Zealand</div>
+            <span class="photo-badge badge-oral">Oral Presentation</span>
+          </div>
+        </div>
+
+        <!-- PAIR 3 -->
+        <div class="photo-card" data-page="2">
+          <div class="photo-card-img-wrap">
+            <img src="Conference_photo/ICOSSE'25_NZZ.jpg" alt="At ICOSSE 2025, Auckland">
+          </div>
+          <div class="photo-caption">
+            <div class="photo-caption-title">ICOSSE 2025 — Auckland (ii)</div>
+            <div class="photo-caption-venue">International Congress on Sustainability Science &amp; Engineering · Auckland, New Zealand</div>
+            <span class="photo-badge badge-oral">Oral Presentation</span>
+          </div>
+        </div>
+        <div class="photo-card" data-page="2">
+          <div class="photo-card-img-wrap">
+            <img src="Conference_photo/EIHE_2025.jpg" alt="Poster presentation at EIHE 2025, BARC Mumbai">
+          </div>
+          <div class="photo-caption">
+            <div class="photo-caption-title">EIHE 2025 — BARC Mumbai</div>
+            <div class="photo-caption-venue">DAE-BRNS Intl. Conference on Electrochemistry for Industry, Health &amp; Environment · BARC, Mumbai</div>
+            <span class="photo-badge badge-poster">Poster Presentation</span>
+          </div>
+        </div>
+
+        <!-- PAIR 4 -->
+        <div class="photo-card" data-page="3">
+          <div class="photo-card-img-wrap">
+            <img src="Conference_photo/CACEE_2025.jpg" alt="Oral presentation at CACEE, TIFR Mumbai">
+          </div>
+          <div class="photo-caption">
+            <div class="photo-caption-title">CACEE 2024 — TIFR Mumbai</div>
+            <div class="photo-caption-venue">Conference on Advances in Chemistry for Energy &amp; Environment · TIFR, Mumbai, India</div>
+            <span class="photo-badge badge-oral">Oral Presentation</span>
+          </div>
+        </div>
+        <div class="photo-card" data-page="3">
+          <div class="photo-card-img-wrap">
+            <img src="Conference_photo/ISE_2024.jpg" alt="Oral presentation at ISE 2024, Stresa, Italy">
+          </div>
+          <div class="photo-caption">
+            <div class="photo-caption-title">ISE 2024 — Stresa, Italy</div>
+            <div class="photo-caption-venue">37th Topical Meeting of the International Society of Electrochemistry · Stresa, Italy</div>
+            <span class="photo-badge badge-oral">Oral Presentation</span>
+          </div>
+        </div>
+
+        <!-- PAIR 5 (last card, centred) -->
+        <div class="photo-card" data-page="4">
+          <div class="photo-card-img-wrap">
+            <img src="Conference_photo/COMSOL_2023.jpg" alt="Paper presentation at COMSOL Conference 2023, Bengaluru">
+          </div>
+          <div class="photo-caption">
+            <div class="photo-caption-title">COMSOL Conference 2023</div>
+            <div class="photo-caption-venue">COMSOL Conference · Bengaluru, India</div>
+            <span class="photo-badge badge-paper">Paper Presentation</span>
+          </div>
+        </div>
+        <!-- empty placeholder to keep grid even on last page -->
+        <div class="photo-card" data-page="4" style="visibility:hidden;pointer-events:none;"></div>
+
       </div>
 
-      <!-- PHOTO 2 -->
-      <div class="photo-card">
-        <img src="Conference_photo/ICNEA2025.jpeg"
-             alt="ICNEA 2025 conference">
-        <div class="photo-caption">
-          <h3>Conference Participation</h3>
-          <p>9th International Conference on New Energy and Applications (ICNEA 2025), Tokyo, Japan</p>
-        </div>
-      </div>
-
-      <!-- PHOTO 3 -->
-      <div class="photo-card">
-        <img src="Conference_photo/IIT Madras.JPG"
-             alt="SustainX and CO2India conference">
-        <div class="photo-caption">
-          <h3>Conference Presentation</h3>
-          <p>SustainX – ACE 2025 and 4th CO2India Meet, IIT Madras, Chennai, India</p>
-        </div>
-      </div>
-
-      <!-- PHOTO 4 -->
-      <div class="photo-card">
-        <img src="Conference_photo/ICOSSE'25_NZ.jpg"
-             alt="ICOSSE 2025 conference">
-        <div class="photo-caption">
-          <h3>Conference Participation</h3>
-          <p>International Congress on Sustainability Science and Engineering (ICOSSE 2025), Auckland, New Zealand</p>
-        </div>
-      </div>
-
-      <!-- PHOTO 5 -->
-      <div class="photo-card">
-        <img src="Conference_photo/ICOSSE'25_NZZ.jpg"
-             alt="ICOSSE 2025 conference">
-        <div class="photo-caption">
-          <h3>Conference Participation</h3>
-          <p>International Congress on Sustainability Science and Engineering (ICOSSE 2025), Auckland, New Zealand</p>
-        </div>
-      </div>
-
-      <!-- PHOTO 6 -->
-      <div class="photo-card">
-        <img src="Conference_photo/EIHE_2025.jpg"
-             alt="EIHE 2025 conference">
-        <div class="photo-caption">
-          <h3>Conference Participation</h3>
-          <p>DAE-BRNS International Conference on Electrochemistry for Industry, Health and Environment (EIHE 2025), BARC, Mumbai, India</p>
-        </div>
-      </div>
-
-      <!-- PHOTO 7 -->
-      <div class="photo-card">
-        <img src="Conference_photo/CACEE_2025.jpg"
-             alt="CACEE conference">
-        <div class="photo-caption">
-          <h3>Conference Participation</h3>
-          <p>Conference on Advances in Chemistry for Energy and Environment (CACEE), TIFR, Mumbai, India</p>
-        </div>
-      </div>
-
-      <!-- PHOTO 8 -->
-      <div class="photo-card">
-        <img src="Conference_photo/ISE_2024.jpg"
-             alt="ISE 2024 conference">
-        <div class="photo-caption">
-          <h3>Conference Participation</h3>
-          <p>37th Topical Meeting of the International Society of Electrochemistry (ISE 2024), Stresa, Italy</p>
-        </div>
-      </div>
-
-      <!-- PHOTO 9 -->
-      <div class="photo-card">
-        <img src="Conference_photo/COMSOL_2023.jpg"
-             alt="COMSOL Conference 2023">
-        <div class="photo-caption">
-          <h3>Conference Participation</h3>
-          <p>COMSOL Conference 2023, Bengaluru, India</p>
-        </div>
-      </div>
+      <!-- RIGHT ARROW -->
+      <button class="carousel-arrow" id="photoNext" aria-label="Next" onclick="slidePhotos(1)">&#10095;</button>
 
     </div>
 
-    <!-- RIGHT ARROW -->
-    <button class="carousel-arrow"
-            id="photoNext"
-            type="button"
-            aria-label="Next photos"
-            onclick="scrollPhotos(1)">
-      &#10095;
-    </button>
+    <!-- DOTS -->
+    <div class="photo-dots" id="photoDots"></div>
 
+    <!-- VIEW ALL LINK -->
+    <a href="#" class="photo-view-all" id="photoViewAll" onclick="openLightbox();return false;">
+      &#9633;&nbsp; View all photos (9)&nbsp;↗
+    </a>
   </div>
 
-  <!-- <p class="photo-note">
-    Browse through conference photographs using the arrows.
-  </p> -->
-
 </section>
+
+<!-- LIGHTBOX OVERLAY -->
+<div class="lightbox-overlay" id="lightboxOverlay" onclick="closeLightboxOutside(event)">
+  <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&#10005;</button>
+  <div class="lightbox-grid">
+
+    <!-- ACEPS 2026 — 1 photo (add more src to lb-img-strip to expand) -->
+    <div class="lb-card">
+      <div class="lb-img-deck">
+        <div class="lb-img-strip">
+          <img src="Conference_photo/ACEPS2026.jpeg" alt="ACEPS 13 2026">
+        </div>
+      </div>
+      <div class="lb-cap">
+        <span class="lb-badge badge-oral">Oral Presentation</span>
+        <div class="lb-cap-title">ACEPS 13 — 2026</div>
+        <div class="lb-cap-venue">13th Asian Conference on Electrochemical Power Sources · IISc, Bengaluru</div>
+      </div>
+    </div>
+
+    <!-- ICNEA 2025 Tokyo — 1 photo -->
+    <div class="lb-card">
+      <div class="lb-img-deck">
+        <div class="lb-img-strip">
+          <img src="Conference_photo/ICNEA2025.jpeg" alt="ICNEA 2025 Tokyo">
+        </div>
+      </div>
+      <div class="lb-cap">
+        <span class="lb-badge badge-oral">Oral Presentation</span>
+        <div class="lb-cap-title">ICNEA 2025 — Tokyo</div>
+        <div class="lb-cap-venue">9th International Conference on New Energy and Applications · Tokyo, Japan</div>
+      </div>
+    </div>
+
+    <!-- SustainX IIT Madras — 1 photo -->
+    <div class="lb-card">
+      <div class="lb-img-deck">
+        <div class="lb-img-strip">
+          <img src="Conference_photo/IIT Madras.JPG" alt="SustainX IIT Madras Best Poster">
+        </div>
+      </div>
+      <div class="lb-cap">
+        <span class="lb-badge badge-poster">Poster Presentation 🏆</span>
+        <div class="lb-cap-title">SustainX – ACE 2025 &amp; 4th CO₂India Meet</div>
+        <div class="lb-cap-venue">IIT Madras, Chennai · Best Poster Award</div>
+      </div>
+    </div>
+
+    <!-- ICOSSE 2025 Auckland — 2 photos in one deck -->
+    <div class="lb-card">
+      <div class="lb-img-deck">
+        <div class="lb-img-strip">
+          <img src="Conference_photo/ICOSSE'25_NZ.jpg"  alt="ICOSSE 2025 Auckland i">
+          <img src="Conference_photo/ICOSSE'25_NZZ.jpg" alt="ICOSSE 2025 Auckland ii">
+        </div>
+        <button class="lb-deck-arrow lb-prev" onclick="deckSlide(this,-1)" aria-label="Previous">&#10094;</button>
+        <button class="lb-deck-arrow lb-next" onclick="deckSlide(this, 1)" aria-label="Next">&#10095;</button>
+        <div class="lb-deck-dots">
+          <div class="lb-deck-dot active"></div>
+          <div class="lb-deck-dot"></div>
+        </div>
+      </div>
+      <div class="lb-cap">
+        <span class="lb-badge badge-oral">Oral Presentation</span>
+        <div class="lb-cap-title">ICOSSE 2025 — Auckland</div>
+        <div class="lb-cap-venue">International Congress on Sustainability Science &amp; Engineering · New Zealand</div>
+      </div>
+    </div>
+
+    <!-- EIHE 2025 BARC — 1 photo -->
+    <div class="lb-card">
+      <div class="lb-img-deck">
+        <div class="lb-img-strip">
+          <img src="Conference_photo/EIHE_2025.jpg" alt="EIHE 2025 BARC Mumbai">
+        </div>
+      </div>
+      <div class="lb-cap">
+        <span class="lb-badge badge-poster">Poster Presentation</span>
+        <div class="lb-cap-title">EIHE 2025 — BARC Mumbai</div>
+        <div class="lb-cap-venue">DAE-BRNS Intl. Conference on Electrochemistry · BARC, Mumbai</div>
+      </div>
+    </div>
+
+    <!-- CACEE TIFR — 1 photo -->
+    <div class="lb-card">
+      <div class="lb-img-deck">
+        <div class="lb-img-strip">
+          <img src="Conference_photo/CACEE_2025.jpg" alt="CACEE TIFR Mumbai">
+        </div>
+      </div>
+      <div class="lb-cap">
+        <span class="lb-badge badge-oral">Oral Presentation</span>
+        <div class="lb-cap-title">CACEE 2024 — TIFR Mumbai</div>
+        <div class="lb-cap-venue">Conference on Advances in Chemistry for Energy &amp; Environment · TIFR, Mumbai</div>
+      </div>
+    </div>
+
+    <!-- ISE 2024 Stresa — 1 photo -->
+    <div class="lb-card">
+      <div class="lb-img-deck">
+        <div class="lb-img-strip">
+          <img src="Conference_photo/ISE_2024.jpg" alt="ISE 2024 Stresa Italy">
+        </div>
+      </div>
+      <div class="lb-cap">
+        <span class="lb-badge badge-oral">Oral Presentation</span>
+        <div class="lb-cap-title">ISE 2024 — Stresa, Italy</div>
+        <div class="lb-cap-venue">37th Topical Meeting of the International Society of Electrochemistry · Stresa, Italy</div>
+      </div>
+    </div>
+
+    <!-- COMSOL 2023 — 1 photo -->
+    <div class="lb-card">
+      <div class="lb-img-deck">
+        <div class="lb-img-strip">
+          <img src="Conference_photo/COMSOL_2023.jpg" alt="COMSOL Conference 2023 Bengaluru">
+        </div>
+      </div>
+      <div class="lb-cap">
+        <span class="lb-badge badge-paper">Paper Presentation</span>
+        <div class="lb-cap-title">COMSOL Conference 2023</div>
+        <div class="lb-cap-venue">COMSOL Conference · Bengaluru, India</div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 <!-- CONTACT -->
@@ -1077,43 +1352,93 @@ My doctoral research investigates transport phenomena and reaction mechanisms in
 
 
 
-// CONFERENCE PHOTO CAROUSEL
-const photoTrack = document.getElementById("photoTrack");
-const photoPrev = document.getElementById("photoPrev");
-const photoNext = document.getElementById("photoNext");
 
-function scrollPhotos(direction) {
-  if (!photoTrack) return;
 
-  const card = photoTrack.querySelector(".photo-card");
-  if (!card) return;
+// ── PHOTO CAROUSEL (2-up, page-based) ──
+(function () {
+  const cards  = Array.from(document.querySelectorAll('#photoTrack .photo-card'));
+  const dotsEl = document.getElementById('photoDots');
+  const prevBtn= document.getElementById('photoPrev');
+  const nextBtn= document.getElementById('photoNext');
+  let page = 0;
+  const pages = Math.max(...cards.map(c => +c.dataset.page)) + 1;
 
-  const gap = parseFloat(getComputedStyle(photoTrack).gap) || 0;
+  for (let i = 0; i < pages; i++) {
+    const d = document.createElement('button');
+    d.className = 'photo-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Page ' + (i+1));
+    d.addEventListener('click', () => goTo(i));
+    dotsEl.appendChild(d);
+  }
 
-  photoTrack.scrollBy({
-    left: direction * (card.offsetWidth + gap),
-    behavior: "smooth"
+  function goTo(p) {
+    page = p;
+    cards.forEach(c => {
+      c.style.display = (+c.dataset.page === page) ? 'flex' : 'none';
+    });
+    document.querySelectorAll('.photo-dot').forEach((d,i) =>
+      d.classList.toggle('active', i === page));
+    prevBtn.disabled = page === 0;
+    nextBtn.disabled = page === pages - 1;
+  }
+  goTo(0);
+  window.slidePhotos = function(dir) { goTo(page + dir); };
+})();
+
+// ── LIGHTBOX ──
+function openLightbox()  { document.getElementById('lightboxOverlay').classList.add('open');    document.body.style.overflow='hidden'; }
+function closeLightbox() { document.getElementById('lightboxOverlay').classList.remove('open'); document.body.style.overflow=''; }
+function closeLightboxOutside(e) { if (e.target === document.getElementById('lightboxOverlay')) closeLightbox(); }
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ── LIGHTBOX INNER DECK SLIDER ──
+// called by each deck's prev/next arrow; `btn` is the clicked arrow element
+function deckSlide(btn, dir) {
+  const deck  = btn.closest('.lb-img-deck');
+  const strip = deck.querySelector('.lb-img-strip');
+  const imgs  = strip.querySelectorAll('img');
+  if (imgs.length < 2) return;
+
+  // read current index from strip's data attr
+  let idx = parseInt(strip.dataset.idx || '0', 10);
+  idx = (idx + dir + imgs.length) % imgs.length;
+  strip.dataset.idx = idx;
+
+  // slide by translating the strip
+  strip.style.transform = `translateX(-${idx * 100}%)`;
+  strip.style.transition = 'transform 0.35s ease';
+
+  // update dots
+  deck.querySelectorAll('.lb-deck-dot').forEach((d, i) =>
+    d.classList.toggle('active', i === idx));
+}
+
+// init: wrap strip images so translate works, hide arrows for single-image decks
+document.addEventListener('DOMContentLoaded', function () {
+  document.querySelectorAll('.lb-img-deck').forEach(function(deck) {
+    const strip = deck.querySelector('.lb-img-strip');
+    if (!strip) return;
+    const imgs = strip.querySelectorAll('img');
+
+    // make strip a flex row that doesn't wrap, and each img fills full width
+    strip.style.display    = 'flex';
+    strip.style.transition = 'transform 0.35s ease';
+    imgs.forEach(function(img) {
+      img.style.flex    = '0 0 100%';
+      img.style.minWidth= '0';
+    });
+
+    // hide arrows if only 1 image
+    const prevA = deck.querySelector('.lb-prev');
+    const nextA = deck.querySelector('.lb-next');
+    const dots  = deck.querySelector('.lb-deck-dots');
+    if (imgs.length < 2) {
+      if (prevA) prevA.hidden = true;
+      if (nextA) nextA.hidden = true;
+      if (dots)  dots.hidden  = true;
+    }
   });
-}
-
-function updatePhotoArrows() {
-  if (!photoTrack || !photoPrev || !photoNext) return;
-
-  const maxScroll = photoTrack.scrollWidth - photoTrack.clientWidth;
-
-  photoPrev.disabled = photoTrack.scrollLeft <= 2;
-  photoNext.disabled = photoTrack.scrollLeft >= maxScroll - 2;
-}
-
-if (photoTrack) {
-  photoTrack.addEventListener("scroll", updatePhotoArrows);
-  window.addEventListener("resize", updatePhotoArrows);
-  window.addEventListener("load", updatePhotoArrows);
-
-  updatePhotoArrows();
-}
-
-  
+});
 </script>
 </body>
 </html>
