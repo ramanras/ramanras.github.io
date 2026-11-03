@@ -89,33 +89,33 @@
   #hero {
     min-height: 92vh;
     display: flex; align-items: center;
-    background: linear-gradient(135deg, #0e2a4a 0%, #1a5c9a 60%, #2a7a6b 100%);
-    position: relative; overflow: hidden;
-    padding: 4rem 2rem;
-  }
-/* ── HERO ── */
-  /* #hero {
-    min-height: 92vh;
-    display: flex; align-items: center;
-    background-image: linear-gradient(rgba(14, 42, 74, 0.65), rgba(14, 42, 74, 0.80)), url('Raman_system.png');
+    background-image: url('Raman_system.png');
     background-size: cover;
-    background-position: center;
+    background-position: center right;
     background-repeat: no-repeat;
     position: relative; overflow: hidden;
     padding: 4rem 2rem;
-  } */
-  
+  }
   #hero::before {
     content: '';
     position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse at 80% 20%, rgba(200,151,42,0.18) 0%, transparent 55%),
-      radial-gradient(ellipse at 10% 80%, rgba(42,122,75,0.20) 0%, transparent 55%);
+    /* strong dark overlay on left so text stays readable, lighter on right so diagram shows */
+    background: linear-gradient(
+      to right,
+      rgba(8, 22, 45, 0.92) 0%,
+      rgba(8, 22, 45, 0.85) 35%,
+      rgba(8, 22, 45, 0.45) 60%,
+      rgba(8, 22, 45, 0.15) 100%
+    );
   }
   .hero-inner {
-    max-width: 900px; margin: 0 auto; width: 100%;
-    display: grid; grid-template-columns: 1fr auto; gap: 3rem; align-items: center;
+    max-width: 1200px; margin: 0 auto; width: 100%;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center;
     position: relative; z-index: 1;
+  }
+  .hero-diagram-side {
+    /* transparent placeholder so the diagram in the background image shows here */
+    min-height: 400px;
   }
   .hero-tag {
     font-family: 'JetBrains Mono', monospace;
@@ -183,9 +183,13 @@
     flex-shrink: 0;
     overflow: hidden;
   }
-  @media (max-width: 600px) {
+  @media (max-width: 700px) {
     .hero-inner { grid-template-columns: 1fr; }
-    .hero-avatar { width: 120px; height: 120px; font-size: 2.8rem; }
+    .hero-diagram-side { display: none; }
+    #hero { background-position: center; }
+    #hero::before {
+      background: rgba(8, 22, 45, 0.82);
+    }
   }
 
   /* ── ABOUT ── */
@@ -693,7 +697,8 @@
         </a>
       </div>
     </div>
-   <img class="hero-avatar" src="Raman.jpg" alt="Raman Kumar Singh"/>
+    <!-- right side is transparent — the background diagram shows through -->
+    <div class="hero-diagram-side"></div>
   </div>
 </section>
 
