@@ -86,26 +86,26 @@
   .section-rule { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 2.5rem; }
 
   /* ── HERO ── */
-  #home {
+  #raman {
     min-height: 92vh;
     display: flex; align-items: center;
     background-image: url('Raman_system.png');
-    background-size: 55%;
-    background-position: center 55%;
+    background-size: cover;
+    background-position: center right;
     background-color: #0b1a30;
     background-repeat: no-repeat;
     position: relative; overflow: hidden;
     padding: 4rem 2rem;
   }
-  #home::before {
+  #raman::before {
     content: '';
     position: absolute; inset: 0;
     background: linear-gradient(
       to right,
-      rgba(8, 22, 45, 0.97) 0%,
-      rgba(8, 22, 45, 0.92) 30%,
-      rgba(8, 22, 45, 0.70) 65%,
-      rgba(8, 22, 45, 0.62) 100%
+      rgba(8, 22, 45, 1.00) 0%,
+      rgba(8, 22, 45, 1.00) 55%,
+      rgba(8, 22, 45, 0.55) 72%,
+      rgba(8, 22, 45, 0.25) 100%
     );
   }
   .hero-inner {
@@ -186,8 +186,8 @@
   @media (max-width: 700px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero-diagram-side { display: none; }
-    #home { background-position: center; }
-    #home::before {
+    #raman { background-position: center; }
+    #raman::before {
       background: rgba(8, 22, 45, 0.82);
     }
   }
@@ -693,7 +693,7 @@
   .nav-links a.active { background: var(--mob-blue) !important; color: #0b1a30 !important; }
 
   /* ── HERO — full-width stacked, diagram as bg ── */
-  #home {
+  #raman {
     min-height: 100svh;
     background-image: url('Raman_system.png') !important;
     background-size: 160% !important;
@@ -702,7 +702,7 @@
     padding: 0 !important;
     display: flex; align-items: flex-end;
   }
-  #home::before {
+  #raman::before {
     background: linear-gradient(
       to bottom,
       #0b1a30 0%,
@@ -879,7 +879,7 @@
 
 <!-- NAV -->
 <nav>
-  <span class="nav-brand">Raman Kumar Singh</span>
+  <a href="#raman" class="nav-brand">Raman Kumar Singh</a>
   <button class="hamburger" id="hbg" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -895,7 +895,7 @@
 </nav>
 
 <!-- HERO -->
-<section id="home">
+<section id="raman">
   <div class="hero-inner">
     <div>
       <p class="hero-tag">Research Associate · IIT Bombay</p>
