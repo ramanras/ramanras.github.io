@@ -29,7 +29,7 @@
   html { scroll-behavior: smooth; }
   body {
     font-family: 'DM Sans', sans-serif;
-    : var(--paper);
+    background: var(--paper);
     color: var(--ink);
     line-height: 1.65;
     font-size: 16px;
@@ -38,7 +38,7 @@
   /* ── NAV ── */
   nav {
     position: sticky; top: 0; z-index: 100;
-    : rgba(247,245,240,0.92);
+    background: rgba(247,245,240,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--line);
     padding: 0 2rem;
@@ -86,27 +86,26 @@
   .section-rule { width: 48px; height: 3px; background: var(--accent); border-radius: 2px; margin-bottom: 2.5rem; }
 
   /* ── HERO ── */
-  #hero {
+  #home {
     min-height: 92vh;
     display: flex; align-items: center;
     background-image: url('Raman_system.png');
     background-size: 65%;
     background-position: center 55%;
-    background-color:#0b1a30
+    background-color: #0b1a30;
     background-repeat: no-repeat;
     position: relative; overflow: hidden;
     padding: 4rem 2rem;
   }
-  #hero::before {
+  #home::before {
     content: '';
     position: absolute; inset: 0;
-    /* strong dark overlay on left so text stays readable, lighter on right so diagram shows */
     background: linear-gradient(
       to right,
-      rgba(8, 22, 45, 0.92) 0%,
-      rgba(8, 22, 45, 0.85) 35%,
-      rgba(8, 22, 45, 0.45) 60%,
-      rgba(8, 22, 45, 0.15) 100%
+      rgba(8, 22, 45, 0.97) 0%,
+      rgba(8, 22, 45, 0.92) 35%,
+      rgba(8, 22, 45, 0.70) 60%,
+      rgba(8, 22, 45, 0.45) 100%
     );
   }
   .hero-inner {
@@ -187,8 +186,8 @@
   @media (max-width: 700px) {
     .hero-inner { grid-template-columns: 1fr; }
     .hero-diagram-side { display: none; }
-    #hero { background-position: center; }
-    #hero::before {
+    #home { background-position: center; }
+    #home::before {
       background: rgba(8, 22, 45, 0.82);
     }
   }
@@ -654,13 +653,233 @@
   /* ── FADE-IN ── */
   .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
   .fade-in.visible { opacity: 1; transform: none; }
+
+/* ══════════════════════════════════════════
+   MOBILE DESIGN  (≤ 768px)
+   Completely different visual language:
+   dark navy theme, card-first, touch-friendly
+   ══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+  /* ── mobile root overrides ── */
+  :root {
+    --mob-bg:    #0b1a30;
+    --mob-card:  #112240;
+    --mob-line:  rgba(126,184,247,0.12);
+    --mob-text:  rgba(255,255,255,0.88);
+    --mob-muted: rgba(255,255,255,0.5);
+    --mob-blue:  #7eb8f7;
+  }
+
+  /* dark body */
+  body {
+    background: var(--mob-bg) !important;
+    color: var(--mob-text);
+  }
+
+  /* ── NAV — dark glass ── */
+  nav {
+    background: rgba(11,26,48,0.96) !important;
+    border-bottom: 1px solid var(--mob-line) !important;
+  }
+  .nav-brand { color: #fff !important; }
+  .hamburger span { background: #fff !important; }
+  .nav-links {
+    background: #0b1a30 !important;
+    border-bottom: 1px solid var(--mob-line) !important;
+  }
+  .nav-links a { color: rgba(255,255,255,0.75) !important; }
+  .nav-links a:hover { background: rgba(126,184,247,0.12) !important; color: var(--mob-blue) !important; }
+  .nav-links a.active { background: var(--mob-blue) !important; color: #0b1a30 !important; }
+
+  /* ── HERO — full-width stacked, diagram as bg ── */
+  #home {
+    min-height: 100svh;
+    background-image: url('Raman_system.png') !important;
+    background-size: 160% !important;
+    background-position: bottom center !important;
+    background-color: #0b1a30 !important;
+    padding: 0 !important;
+    display: flex; align-items: flex-end;
+  }
+  #home::before {
+    background: linear-gradient(
+      to bottom,
+      #0b1a30 0%,
+      rgba(11,26,48,0.75) 40%,
+      rgba(11,26,48,0.3) 65%,
+      #0b1a30 100%
+    ) !important;
+  }
+  .hero-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0 !important;
+    padding: 2.5rem 1.5rem 3rem !important;
+    max-width: 100% !important;
+    width: 100%;
+  }
+  .hero-diagram-side { display: none !important; }
+
+  .hero-tag {
+    font-size: 0.7rem !important;
+    color: var(--mob-blue) !important;
+    letter-spacing: 0.18em !important;
+    margin-bottom: 0.75rem !important;
+  }
+  .hero-tag::before { background: var(--mob-blue) !important; width: 20px !important; }
+
+  .hero-name {
+    font-size: clamp(2.6rem, 11vw, 3.6rem) !important;
+    color: #fff !important;
+    line-height: 0.98 !important;
+    margin-bottom: 1rem !important;
+    text-shadow: 0 2px 32px rgba(0,0,0,0.6) !important;
+  }
+  .hero-title {
+    font-size: 0.95rem !important;
+    color: rgba(255,255,255,0.85) !important;
+    margin-bottom: 0.25rem !important;
+  }
+  .hero-inst {
+    font-size: 0.8rem !important;
+    color: var(--mob-muted) !important;
+    margin-bottom: 1.5rem !important;
+  }
+  .hero-divider {
+    background: var(--mob-line) !important;
+    margin-bottom: 1.2rem !important;
+  }
+  .chip {
+    background: rgba(126,184,247,0.1) !important;
+    border-color: rgba(126,184,247,0.3) !important;
+    color: var(--mob-blue) !important;
+    font-size: 0.7rem !important;
+    padding: 0.3rem 0.8rem !important;
+  }
+  .hero-btns { gap: 0.6rem !important; margin-top: 1.5rem !important; }
+  .btn {
+    padding: 0.75rem 1.3rem !important;
+    font-size: 0.85rem !important;
+    border-radius: 8px !important;
+  }
+  .btn-primary { background: var(--mob-blue) !important; color: #0b1a30 !important; font-weight: 700 !important; }
+  .btn-secondary { border-color: rgba(255,255,255,0.3) !important; }
+
+  /* ── SECTIONS — dark card style ── */
+  .section {
+    padding: 3rem 1.25rem !important;
+    max-width: 100% !important;
+  }
+  .section-title {
+    font-size: 1.7rem !important;
+    color: #fff !important;
+  }
+  .section-rule { background: var(--mob-blue) !important; }
+
+  /* ── ABOUT cards ── */
+  .about-grid { grid-template-columns: 1fr !important; gap: 0.9rem !important; }
+  .about-card {
+    background: var(--mob-card) !important;
+    border: 1px solid var(--mob-line) !important;
+    box-shadow: none !important;
+  }
+  .about-card h3 { color: var(--mob-blue) !important; }
+  .about-card p, .about-card li { color: rgba(255,255,255,0.72) !important; }
+
+  /* ── TIMELINE ── */
+  .timeline::before { background: var(--mob-line) !important; }
+  .tl-dot { background: var(--mob-blue) !important; border-color: var(--mob-bg) !important; box-shadow: 0 0 0 2px var(--mob-blue) !important; }
+  .tl-period { color: var(--mob-blue) !important; }
+  .tl-degree { color: #fff !important; }
+  .tl-inst { color: var(--mob-muted) !important; }
+  .tl-thesis {
+    background: rgba(126,184,247,0.07) !important;
+    border-left-color: var(--mob-blue) !important;
+    color: rgba(255,255,255,0.65) !important;
+  }
+  .exp-item { color: rgba(255,255,255,0.7) !important; border-bottom-color: var(--mob-line) !important; }
+  .exp-item::before { color: var(--mob-blue) !important; }
+
+  /* ── RESEARCH cards ── */
+  .research-cards { grid-template-columns: 1fr !important; gap: 0.9rem !important; }
+  .research-intro { color: rgba(255,255,255,0.7) !important; }
+  .r-card {
+    background: var(--mob-card) !important;
+    border-color: var(--mob-line) !important;
+    box-shadow: none !important;
+  }
+  .r-card h3 { color: #fff !important; }
+  .r-card p { color: rgba(255,255,255,0.65) !important; }
+
+  /* ── PUBLICATIONS ── */
+  .pub-section-title { color: var(--mob-blue) !important; border-bottom-color: var(--mob-line) !important; }
+  .pub-item {
+    background: var(--mob-card) !important;
+    border-color: var(--mob-line) !important;
+    border-left-color: var(--mob-blue) !important;
+    box-shadow: none !important;
+  }
+  .pub-item.conference { border-left-color: #f0c96a !important; }
+  .pub-item.presentation { border-left-color: #6fcf97 !important; }
+  .pub-title { color: rgba(255,255,255,0.9) !important; }
+  .pub-title a { color: var(--mob-blue) !important; }
+  .pub-meta { color: var(--mob-muted) !important; }
+  .pub-num { color: var(--mob-muted) !important; }
+
+  /* ── AWARDS ── */
+  .award-card {
+    background: rgba(200,151,42,0.08) !important;
+    border-color: rgba(200,151,42,0.3) !important;
+    border-left-color: #f0c96a !important;
+  }
+  .award-title { color: #fff !important; }
+  .award-desc { color: rgba(255,255,255,0.65) !important; }
+
+  /* ── PHOTO CAROUSEL ── */
+  .photo-track { grid-template-columns: 1fr !important; }
+  .photo-card {
+    background: var(--mob-card) !important;
+    border-color: var(--mob-line) !important;
+  }
+  .photo-caption-title { color: rgba(255,255,255,0.9) !important; }
+  .photo-caption-venue { color: var(--mob-muted) !important; }
+  .carousel-arrow {
+    background: var(--mob-card) !important;
+    border-color: var(--mob-line) !important;
+    color: var(--mob-blue) !important;
+  }
+  .photo-dot { background: var(--mob-card) !important; border-color: var(--mob-blue) !important; }
+  .photo-dot.active { background: var(--mob-blue) !important; }
+  .photo-view-all { color: var(--mob-blue) !important; }
+
+  /* ── CONTACT ── */
+  .contact-grid { grid-template-columns: 1fr !important; }
+  .contact-item {
+    background: var(--mob-card) !important;
+    border-color: var(--mob-line) !important;
+    color: rgba(255,255,255,0.88) !important;
+    box-shadow: none !important;
+  }
+  .contact-item:hover { border-color: var(--mob-blue) !important; }
+  .contact-label { color: var(--mob-muted) !important; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--mob-bg) !important;
+    border-top-color: var(--mob-line) !important;
+    color: var(--mob-muted) !important;
+  }
+
+} /* end @media mobile */
 </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
-  <a href="#hero" class="nav-brand">Raman Kumar Singh</a>
+  <span class="nav-brand">Raman Kumar Singh</span>
   <button class="hamburger" id="hbg" aria-label="Menu">
     <span></span><span></span><span></span>
   </button>
@@ -676,7 +895,7 @@
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section id="home">
   <div class="hero-inner">
     <div>
       <p class="hero-tag">Research Associate · IIT Bombay</p>
