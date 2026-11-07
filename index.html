@@ -522,18 +522,22 @@
 /* inner image deck — swipeable strip */
 .lb-img-deck {
   position: relative;
+  overflow: hidden;
 }
 .lb-img-strip {
   display: flex;
+  flex-wrap: nowrap;
   overflow: hidden;
+  width: 100%;
+  transition: transform 0.35s ease;
 }
 .lb-img-strip img {
   flex: 0 0 100%;
+  min-width: 100%;
   width: 100%;
   height: 190px;
   object-fit: cover;
   display: block;
-  transition: transform 0.35s ease;
 }
 /* deck arrows — shown only when multiple images */
 .lb-deck-arrow {
